@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F8FAF6;
+    color: #1F2937;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom Botanical Micro-Interactions */
+.btn-press {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-press:active {
+  transform: scale(0.98);
+}
+
+/* Subtle botanical scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5EE;
+}
+::-webkit-scrollbar-thumb {
+  background: #A8C5A0;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8FB585;
+}
