@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Sprout, ShieldCheck, Sparkles, Calendar, ArrowRight, CheckCircle2,
-  Leaf, Search, ShoppingCart, Star, Users, Package, TrendingUp,
+  Leaf, Search, ShoppingCart, Star, Users, Package, TrendingUp, Check
 } from 'lucide-react';
 import Button from '../../components/common/Button';
 import Card from '../../components/common/Card';
@@ -15,49 +15,47 @@ import { getPopularServices } from '../../data/mockServices';
 import { mockTestimonials, platformStats, howItWorksSteps } from '../../data/mockTestimonials';
 
 /**
- * HomePage — Main landing page for Florva botanical platform.
- * Sections: Hero, How It Works, Popular Plants, Services Preview,
- * Testimonials, Platform Stats, and CTA banner.
+ * HomePage — Refined Main Landing Page for Florva Botanical Platform
+ * Natural, grounded gardening business aesthetic. Clean typography,
+ * consistent cards, no excessive gradients or decorative blur artifacts.
  */
 export default function HomePage() {
   const popularProducts = getPopularProducts().slice(0, 4);
   const featuredProduct = getFeaturedProduct();
   const popularServices = getPopularServices().slice(0, 3);
 
-  // Map step icon strings to actual Lucide components
+  // Map step icon strings to Lucide components
   const stepIcons = { Search, ShoppingCart, Sprout };
 
   return (
     <div className="space-y-16 sm:space-y-24">
 
       {/* ═══════════════════════════════════════════════
-          SECTION 1: Hero Banner with Featured Product
+          SECTION 1: Hero Banner with Featured Specimen
           ═══════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden pt-8 pb-16 sm:pt-16 sm:pb-24">
+      <section className="pt-8 pb-12 sm:pt-14 sm:pb-20 border-b border-charcoal-100/60 bg-offwhite">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            
             {/* Left Hero Copy */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               <Badge variant="forest" size="lg" icon={Sprout}>
                 Florva Botanical Living Platform
               </Badge>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-forest-900 leading-[1.15]">
-                Cultivate Serenity in Your{' '}
-                <span className="text-forest-700 underline decoration-sage-300 decoration-wavy decoration-2">
-                  Living Spaces
-                </span>.
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-forest-900 leading-[1.12]">
+                Cultivate Serenity in Your <span className="text-forest-700">Living Spaces</span>.
               </h1>
 
               <p className="text-base sm:text-lg text-charcoal-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Connect with verified horticulturists, discover resilient botanical plants,
+                Connect with our verified horticulturist, discover resilient botanical plants,
                 track personal watering schedules, and consult our context-aware Gemini AI plant doctor.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-1">
                 <Link to="/shop">
                   <Button variant="primary" size="lg" icon={ArrowRight}>
-                    Explore Botanical Shop
+                    Explore Plant Shop
                   </Button>
                 </Link>
                 <Link to="/services">
@@ -68,17 +66,17 @@ export default function HomePage() {
               </div>
 
               {/* Trust Indicators */}
-              <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-medium text-charcoal-500">
+              <div className="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-semibold text-charcoal-600">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-forest-600" />
+                  <Check className="w-4 h-4 text-forest" />
                   <span>Verified Single Gardener</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-forest-600" />
+                  <Check className="w-4 h-4 text-forest" />
                   <span>Authoritative SSLCommerz Sandbox</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-forest-600" />
+                  <Check className="w-4 h-4 text-forest" />
                   <span>Dynamic Care Reminders</span>
                 </div>
               </div>
@@ -87,56 +85,51 @@ export default function HomePage() {
             {/* Right Hero Visual — Featured Product Card */}
             <div className="lg:col-span-5">
               <div className="relative mx-auto max-w-md lg:max-w-none">
-                {/* Decorative Botanical Glow */}
-                <div className="absolute -inset-2 bg-gradient-to-r from-sage-200 to-forest-200 rounded-2xl blur-xl opacity-60 transform -rotate-1" />
-
                 {featuredProduct && (
-                  <Card className="relative overflow-hidden border-forest-100 shadow-botanical-lg p-0">
-                    <div className="h-72 sm:h-80 w-full overflow-hidden bg-forest-900 relative">
+                  <Card className="overflow-hidden border-charcoal-200/80 shadow-botanical p-0 bg-white rounded-2xl">
+                    <div className="h-64 sm:h-72 w-full overflow-hidden bg-offwhite relative">
                       <img
                         src={featuredProduct.image}
                         alt={featuredProduct.name}
-                        className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover object-center"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent" />
-                      <div className="absolute bottom-4 left-4 right-4 text-white">
-                        <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-sage-500/80 backdrop-blur-sm text-forest-950 mb-1">
+                      <div className="absolute top-3 left-3">
+                        <span className="inline-block px-2.5 py-1 rounded-md text-[10px] font-bold bg-forest text-white shadow-sm">
                           Featured Specimen
                         </span>
-                        <h3 className="text-xl font-bold">{featuredProduct.name}</h3>
-                        <p className="text-xs text-sage-200">
-                          {featuredProduct.tags.join(' • ')}
-                        </p>
+                      </div>
+                      <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-xs p-3 rounded-xl border border-charcoal-100 shadow-sm flex items-center justify-between">
+                        <div>
+                          <h3 className="font-bold text-forest-900 text-sm">{featuredProduct.name}</h3>
+                          <p className="text-[11px] text-charcoal-500">{featuredProduct.tags?.join(' • ')}</p>
+                        </div>
+                        <span className="text-base font-extrabold text-forest-800">
+                          ৳{featuredProduct.price.toLocaleString()}
+                        </span>
                       </div>
                     </div>
 
-                    <div className="p-5 bg-white space-y-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <span className="text-xs text-charcoal-400 uppercase tracking-wider block">Practicum Specimen</span>
-                          <span className="text-2xl font-bold text-forest-900">
-                            ৳ {featuredProduct.price.toLocaleString()} BDT
-                          </span>
-                        </div>
-                        <Badge variant="success" size="md">
-                          In Stock & Ready
-                        </Badge>
-                      </div>
-
-                      <div className="grid grid-cols-3 gap-2 pt-1 text-center text-xs">
+                    <div className="p-4 bg-white space-y-3">
+                      <div className="grid grid-cols-3 gap-2 text-center text-xs">
                         <div className="p-2 rounded-lg bg-offwhite border border-charcoal-100">
                           <span className="text-charcoal-400 block text-[10px]">Sunlight</span>
-                          <span className="font-semibold text-forest-800">{featuredProduct.sunlight}</span>
+                          <span className="font-semibold text-forest-900">{featuredProduct.sunlight}</span>
                         </div>
                         <div className="p-2 rounded-lg bg-offwhite border border-charcoal-100">
                           <span className="text-charcoal-400 block text-[10px]">Watering</span>
-                          <span className="font-semibold text-forest-800">{featuredProduct.waterFrequency}</span>
+                          <span className="font-semibold text-forest-900">{featuredProduct.waterFrequency}</span>
                         </div>
                         <div className="p-2 rounded-lg bg-offwhite border border-charcoal-100">
                           <span className="text-charcoal-400 block text-[10px]">Difficulty</span>
-                          <span className="font-semibold text-forest-800">{featuredProduct.careLevel}</span>
+                          <span className="font-semibold text-forest-900">{featuredProduct.careLevel}</span>
                         </div>
                       </div>
+
+                      <Link to={`/shop/${featuredProduct.slug}`} className="block">
+                        <Button variant="outline" size="sm" className="w-full">
+                          View Specimen Details
+                        </Button>
+                      </Link>
                     </div>
                   </Card>
                 )}
@@ -147,46 +140,37 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SECTION 2: How It Works — 3 Step Explainer
+          SECTION 2: How It Works — 3 Simple Steps
           ═══════════════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto space-y-3 mb-12">
+        <div className="text-center max-w-2xl mx-auto space-y-2 mb-10">
           <Badge variant="default" size="md">Simple & Intuitive</Badge>
-          <h2 className="text-3xl font-bold text-forest-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-forest-900 tracking-tight">
             How Florva Works
           </h2>
-          <p className="text-sm text-charcoal-600 leading-relaxed">
-            From browsing to blooming — three simple steps to transform your living space.
+          <p className="text-xs sm:text-sm text-charcoal-600 leading-relaxed">
+            From browsing to blooming — three straightforward steps to transform your living space.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {howItWorksSteps.map((step) => {
             const StepIcon = stepIcons[step.icon] || Sprout;
             return (
-              <div key={step.step} className="text-center space-y-4 relative">
-                {/* Step Number Ring */}
+              <div key={step.step} className="bg-white rounded-2xl border border-charcoal-200/80 p-6 text-center space-y-3 relative shadow-sm">
                 <div className="relative inline-flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-2xl bg-forest-50 border-2 border-forest-200 flex items-center justify-center text-forest-700 shadow-sm">
-                    <StepIcon className="w-7 h-7" />
+                  <div className="w-14 h-14 rounded-xl bg-forest-50 border border-forest-200 flex items-center justify-center text-forest-800">
+                    <StepIcon className="w-6 h-6" />
                   </div>
-                  {/* Step number badge */}
-                  <span className="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-forest text-white text-xs font-bold flex items-center justify-center shadow-sm">
+                  <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-forest text-white text-[11px] font-bold flex items-center justify-center">
                     {step.step}
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-forest-900">{step.title}</h3>
+                <h3 className="text-base font-bold text-forest-900">{step.title}</h3>
                 <p className="text-xs text-charcoal-600 leading-relaxed max-w-xs mx-auto">
                   {step.description}
                 </p>
-
-                {/* Connector Arrow — visible on desktop between steps */}
-                {step.step < 3 && (
-                  <div className="hidden md:block absolute top-8 -right-4 text-sage-300">
-                    <ArrowRight className="w-6 h-6" />
-                  </div>
-                )}
               </div>
             );
           })}
@@ -197,19 +181,19 @@ export default function HomePage() {
           SECTION 3: Popular Plants Grid
           ═══════════════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
-          <div className="space-y-2">
-            <Badge variant="forest" size="md" icon={Leaf}>Popular Plants</Badge>
-            <h2 className="text-3xl font-bold text-forest-900 tracking-tight">
-              Most Loved Botanicals
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-8">
+          <div className="space-y-1">
+            <Badge variant="forest" size="md" icon={Leaf}>Popular Specimens</Badge>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-forest-900 tracking-tight">
+              Most Loved Botanical Plants
             </h2>
-            <p className="text-sm text-charcoal-600">
-              Hand-picked favorites chosen by our community of plant parents.
+            <p className="text-xs text-charcoal-600">
+              Hand-picked favorites chosen by our urban plant parents.
             </p>
           </div>
           <Link to="/shop">
-            <Button variant="outline" size="md" icon={ArrowRight}>
-              View Full Shop
+            <Button variant="outline" size="sm" icon={ArrowRight}>
+              View All Plants
             </Button>
           </Link>
         </div>
@@ -222,81 +206,22 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SECTION 4: Platform Capabilities Feature Grid
+          SECTION 4: Gardening Services Preview
           ═══════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto space-y-3 mb-12">
-          <Badge variant="default" size="md">Architectural Capabilities</Badge>
-          <h2 className="text-3xl font-bold text-forest-900 tracking-tight">
-            Designed for Comprehensive Plant Care
-          </h2>
-          <p className="text-sm text-charcoal-600 leading-relaxed">
-            Every module in Florva is engineered to solve authentic gardening challenges
-            while maintaining clean MERN separation.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            {
-              icon: Leaf,
-              title: 'Botanical E-Commerce',
-              description: 'Hand-inspected indoor, outdoor, succulent, and flowering specimens paired with botanical care guides.',
-              badge: 'Curated Collection',
-            },
-            {
-              icon: Calendar,
-              title: 'On-Demand Horticulturists',
-              description: 'Schedule balcony setup, repotting, pest control, and diagnostic appointments with our verified gardener.',
-              badge: 'Verified Services',
-            },
-            {
-              icon: Sprout,
-              title: 'Personal "My Plants" Journal',
-              description: 'Catalog your collection, compute dynamic watering schedules, and receive timely in-app care alerts.',
-              badge: 'Care Engine',
-            },
-            {
-              icon: Sparkles,
-              title: 'Gemini AI Plant Doctor',
-              description: 'Consult our context-aware botanical AI assistant for sunlight analysis, soil advice, and diagnostics.',
-              badge: 'Google Gemini Powered',
-            },
-          ].map((feature) => {
-            const Icon = feature.icon;
-            return (
-              <Card key={feature.title} hoverable padding="p-6" className="flex flex-col justify-between">
-                <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-forest-50 border border-forest-100 flex items-center justify-center text-forest-700">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <Badge variant="forest" size="sm">{feature.badge}</Badge>
-                  <h3 className="text-lg font-bold text-forest-900">{feature.title}</h3>
-                  <p className="text-xs text-charcoal-600 leading-relaxed">{feature.description}</p>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          SECTION 5: Gardening Services Preview
-          ═══════════════════════════════════════════════ */}
-      <section className="bg-sage-50/50 py-16 sm:py-20">
+      <section className="bg-sage-50/50 py-12 sm:py-16 border-y border-charcoal-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
-            <div className="space-y-2">
-              <Badge variant="forest" size="md" icon={Calendar}>Expert Services</Badge>
-              <h2 className="text-3xl font-bold text-forest-900 tracking-tight">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-8">
+            <div className="space-y-1">
+              <Badge variant="forest" size="md" icon={Calendar}>Expert Care On-Demand</Badge>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-forest-900 tracking-tight">
                 Professional Gardening Services
               </h2>
-              <p className="text-sm text-charcoal-600">
-                Book verified horticulturists for setup, consultation, and maintenance.
+              <p className="text-xs text-charcoal-600">
+                Book verified horticulturists for balcony setups, repotting, and health diagnostics.
               </p>
             </div>
             <Link to="/services">
-              <Button variant="outline" size="md" icon={ArrowRight}>
+              <Button variant="outline" size="sm" icon={ArrowRight}>
                 All Services
               </Button>
             </Link>
@@ -311,16 +236,16 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SECTION 6: Customer Testimonials
+          SECTION 5: Customer Testimonials
           ═══════════════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto space-y-3 mb-12">
-          <Badge variant="default" size="md" icon={Star}>Customer Stories</Badge>
-          <h2 className="text-3xl font-bold text-forest-900 tracking-tight">
-            Loved by Plant Parents
+        <div className="text-center max-w-2xl mx-auto space-y-2 mb-10">
+          <Badge variant="default" size="md" icon={Star}>Verified Feedback</Badge>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-forest-900 tracking-tight">
+            Loved by Urban Plant Parents
           </h2>
-          <p className="text-sm text-charcoal-600 leading-relaxed">
-            Real feedback from customers who transformed their spaces with Florva.
+          <p className="text-xs sm:text-sm text-charcoal-600 leading-relaxed">
+            Real feedback from customers who transformed their homes with Florva.
           </p>
         </div>
 
@@ -332,10 +257,10 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SECTION 7: Platform Statistics Bar
+          SECTION 6: Platform Statistics Bar
           ═══════════════════════════════════════════════ */}
-      <section className="bg-forest-900 text-white py-12 rounded-2xl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow-botanical-lg">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y lg:divide-y-0 lg:divide-x divide-forest-800">
+      <section className="bg-forest-900 text-white py-10 rounded-2xl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow-botanical">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center divide-y lg:divide-y-0 lg:divide-x divide-forest-800">
           {[
             { value: platformStats.totalPlants, label: 'Plant Varieties Available', icon: Package },
             { value: platformStats.happyCustomers, label: 'Happy Plant Parents', icon: Users },
@@ -344,14 +269,14 @@ export default function HomePage() {
           ].map((stat, idx) => {
             const StatIcon = stat.icon;
             return (
-              <div key={stat.label} className={idx > 0 ? 'pt-6 lg:pt-0' : ''}>
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <StatIcon className="w-5 h-5 text-sage-400" />
+              <div key={stat.label} className={idx > 0 ? 'pt-4 lg:pt-0' : ''}>
+                <div className="flex items-center justify-center gap-1.5 mb-1 text-sage-400">
+                  <StatIcon className="w-4 h-4" />
                 </div>
-                <div className="text-3xl sm:text-4xl font-extrabold text-sage-300 tracking-tight">
+                <div className="text-2xl sm:text-3xl font-extrabold text-sage-300 tracking-tight">
                   {stat.value}
                 </div>
-                <div className="text-xs text-sage-100 font-medium mt-1">
+                <div className="text-xs text-sage-100 font-medium mt-0.5">
                   {stat.label}
                 </div>
               </div>
@@ -361,35 +286,33 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SECTION 8: Call-to-Action Banner
+          SECTION 7: Call-to-Action Banner
           ═══════════════════════════════════════════════ */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <Card className="bg-gradient-to-r from-forest-50 to-sage-50 border-forest-200 shadow-botanical-lg text-center p-8 sm:p-12">
-          <div className="max-w-2xl mx-auto space-y-5">
-            <div className="w-14 h-14 rounded-2xl bg-forest border border-forest-600 flex items-center justify-center text-sage mx-auto">
-              <Sprout className="w-7 h-7" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-forest-900">
-              Ready to Start Your Botanical Journey?
-            </h2>
-            <p className="text-sm text-charcoal-600 leading-relaxed">
-              Join our community of plant parents. Create a free account to shop plants,
-              book services, track your collection, and access AI-powered care advice.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link to="/register">
-                <Button variant="primary" size="lg" icon={ArrowRight}>
-                  Create Free Account
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button variant="ghost" size="lg">
-                  Learn More About Florva
-                </Button>
-              </Link>
-            </div>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
+        <div className="bg-forest text-white rounded-2xl p-8 sm:p-12 text-center space-y-4 shadow-botanical">
+          <div className="w-12 h-12 rounded-xl bg-forest-800 border border-sage-400/40 flex items-center justify-center text-sage mx-auto">
+            <Sprout className="w-6 h-6" />
           </div>
-        </Card>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+            Ready to Start Your Botanical Journey?
+          </h2>
+          <p className="text-xs sm:text-sm text-sage-200 max-w-xl mx-auto leading-relaxed">
+            Create your digital garden, schedule an on-site horticulture service, or ask our
+            Gemini AI botanical assistant for instant plant care guidance.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            <Link to="/shop">
+              <Button variant="secondary" size="lg" icon={ArrowRight}>
+                Browse Plant Shop
+              </Button>
+            </Link>
+            <Link to="/my-plants">
+              <Button variant="outline" size="lg" className="border-sage-400 text-white hover:bg-forest-800">
+                Open My Plants Journal
+              </Button>
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );

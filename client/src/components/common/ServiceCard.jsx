@@ -1,29 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Star, ArrowRight } from 'lucide-react';
+import { Clock, Star, ArrowRight, Check } from 'lucide-react';
 import Card from './Card';
 import Badge from './Badge';
 import Button from './Button';
 
 /**
  * Service Card for displaying gardening services.
- * Shows service image, pricing, duration, and included items.
+ * Shows service image, pricing in BDT, duration, and inclusions.
  */
 export default function ServiceCard({ service, compact = false }) {
-  const { _id, name, slug, category, price, duration, description, includes = [], image, rating, reviewCount } = service;
+  const { _id, name, slug, category, price, duration, description, includes = [], image, rating } = service;
 
   return (
-    <Card hoverable padding="p-0" className="group overflow-hidden flex flex-col">
+    <Card hoverable padding="p-0" className="overflow-hidden flex flex-col h-full bg-white border border-charcoal-100 rounded-xl">
       {/* Service Image */}
-      <Link to={`/services/${slug}`} className="block relative overflow-hidden">
+      <Link to={`/services/${slug}`} className="block relative overflow-hidden bg-offwhite">
         <div className={compact ? 'h-36' : 'h-44 sm:h-48'}>
           <img
             src={image}
             alt={name}
-            className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
             loading="lazy"
           />
-          {/* Gradient Overlay */}
+          {/* Subtle gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-forest-950/60 via-transparent to-transparent" />
 
           {/* Category Badge */}
@@ -33,8 +33,8 @@ export default function ServiceCard({ service, compact = false }) {
 
           {/* Duration Badge */}
           <div className="absolute top-2.5 right-2.5">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-white/90 backdrop-blur-sm text-charcoal-700 shadow-sm">
-              <Clock className="w-3 h-3" />
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-white/95 text-charcoal-700 shadow-sm border border-charcoal-100">
+              <Clock className="w-3 h-3 text-forest" />
               {duration}
             </span>
           </div>
@@ -56,22 +56,22 @@ export default function ServiceCard({ service, compact = false }) {
           )}
         </div>
 
-        {/* Description — truncated in compact mode */}
+        {/* Description */}
         <p className={`text-xs text-charcoal-600 leading-relaxed mb-3 ${compact ? 'line-clamp-2' : 'line-clamp-3'}`}>
           {description}
         </p>
 
-        {/* Included Items Preview — hidden in compact */}
+        {/* Included Items Preview */}
         {!compact && includes.length > 0 && (
-          <ul className="space-y-1 mb-3">
+          <ul className="space-y-1.5 mb-4">
             {includes.slice(0, 3).map((item) => (
-              <li key={item} className="flex items-center gap-1.5 text-[11px] text-charcoal-500">
-                <span className="w-1 h-1 rounded-full bg-sage-400 flex-shrink-0" />
-                {item}
+              <li key={item} className="flex items-center gap-1.5 text-[11px] text-charcoal-600">
+                <Check className="w-3.5 h-3.5 text-forest-600 flex-shrink-0" />
+                <span>{item}</span>
               </li>
             ))}
             {includes.length > 3 && (
-              <li className="text-[11px] text-forest-600 font-medium pl-2.5">
+              <li className="text-[11px] text-forest-600 font-medium pl-5">
                 +{includes.length - 3} more included
               </li>
             )}
@@ -79,14 +79,14 @@ export default function ServiceCard({ service, compact = false }) {
         )}
 
         {/* Price and Action */}
-        <div className="mt-auto pt-2 flex items-center justify-between gap-2 border-t border-charcoal-50">
-          <div className="pt-2">
-            <span className="text-xs text-charcoal-400">Starting from</span>
+        <div className="mt-auto pt-3 flex items-center justify-between gap-2 border-t border-charcoal-100">
+          <div>
+            <span className="text-[11px] text-charcoal-400 block -mb-0.5">Service fee</span>
             <p className="text-lg font-bold text-forest-800">৳{price.toLocaleString()}</p>
           </div>
           <Link to={`/services/${slug}`}>
-            <Button variant="outline" size="sm" icon={ArrowRight} className="text-[11px] mt-2">
-              {compact ? 'View' : 'View Details'}
+            <Button variant="outline" size="sm" icon={ArrowRight} className="text-[11px]">
+              {compact ? 'Book' : 'Book Service'}
             </Button>
           </Link>
         </div>
