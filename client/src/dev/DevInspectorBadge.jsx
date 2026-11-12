@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Code2, ChevronDown, ChevronUp, Layers, EyeOff } from 'lucide-react';
+import { Code2, ChevronDown, ChevronUp, Layers, EyeOff, Sprout } from 'lucide-react';
 
 /**
  * In-Browser Development Route & Component Inspector Badge
@@ -18,64 +18,67 @@ export default function DevInspectorBadge() {
   const [isHidden, setIsHidden] = useState(false);
 
   // Dynamic route-to-component mapping table
-  // Each entry maps a URL path to the exact source files rendering that view
   const routeComponentMap = {
     '/': {
       page: 'HomePage.jsx',
       title: 'Home — Florva Botanical Living',
-      layout: 'PublicLayout.jsx',
-      subcomponents: ['Navbar.jsx', 'Footer.jsx', 'ProductCard.jsx', 'ServiceCard.jsx', 'TestimonialCard.jsx', 'Card.jsx', 'Button.jsx', 'Badge.jsx'],
-      dataFiles: ['mockProducts.js', 'mockServices.js', 'mockTestimonials.js'],
-    },
-    '/about': {
-      page: 'AboutPage.jsx',
-      title: 'About — Florva Platform',
-      layout: 'PublicLayout.jsx',
-      subcomponents: ['Navbar.jsx', 'Footer.jsx', 'Card.jsx', 'Button.jsx', 'Badge.jsx'],
-      dataFiles: [],
-    },
-    '/contact': {
-      page: 'ContactPage.jsx',
-      title: 'Contact — Get in Touch',
-      layout: 'PublicLayout.jsx',
-      subcomponents: ['Navbar.jsx', 'Footer.jsx', 'Card.jsx', 'Button.jsx', 'Badge.jsx', 'Input.jsx'],
-      dataFiles: [],
+      subcomponents: ['Navbar.jsx', 'ProductCard.jsx', 'ServiceCard.jsx', 'TestimonialCard.jsx', 'Footer.jsx', 'PlantChatbot.jsx']
     },
     '/shop': {
       page: 'ShopPage.jsx',
-      title: 'Shop Plants — Botanical Collection',
-      layout: 'PublicLayout.jsx',
-      subcomponents: ['ProductCard.jsx', 'FilterSidebar.jsx', 'Navbar.jsx', 'Footer.jsx'],
-      dataFiles: ['mockProducts.js'],
+      title: 'Shop Plants — Botanical Catalog',
+      subcomponents: ['Navbar.jsx', 'ProductCard.jsx', 'Badge.jsx', 'Button.jsx', 'Footer.jsx']
     },
     '/services': {
       page: 'ServicesPage.jsx',
-      title: 'Gardening Services',
-      layout: 'PublicLayout.jsx',
-      subcomponents: ['ServiceCard.jsx', 'Navbar.jsx', 'Footer.jsx'],
-      dataFiles: ['mockServices.js'],
+      title: 'Gardening Services Catalog',
+      subcomponents: ['Navbar.jsx', 'ServiceCard.jsx', 'Badge.jsx', 'Footer.jsx']
+    },
+    '/cart': {
+      page: 'CartPage.jsx',
+      title: 'Shopping Cart',
+      subcomponents: ['Navbar.jsx', 'Card.jsx', 'Button.jsx', 'Badge.jsx', 'Footer.jsx']
+    },
+    '/checkout': {
+      page: 'CheckoutPage.jsx',
+      title: 'Order Placement & Sandbox Payment',
+      subcomponents: ['Navbar.jsx', 'Card.jsx', 'Input.jsx', 'Button.jsx', 'Footer.jsx']
     },
     '/my-plants': {
       page: 'MyPlantsPage.jsx',
-      title: 'My Plants — Care Journal',
-      layout: 'CustomerLayout.jsx',
-      subcomponents: ['PlantCard.jsx', 'CareReminderList.jsx', 'AddPlantModal.jsx'],
-      dataFiles: [],
+      title: 'My Plants — Personal Care Journal',
+      subcomponents: ['Navbar.jsx', 'Card.jsx', 'Badge.jsx', 'Button.jsx', 'Input.jsx', 'Footer.jsx']
     },
     '/gardener': {
       page: 'GardenerDashboardPage.jsx',
-      title: 'Gardener Dashboard',
-      layout: 'GardenerLayout.jsx',
-      subcomponents: ['StatMetricCard.jsx', 'SalesTrendChart.jsx', 'RecentAppointments.jsx'],
-      dataFiles: [],
+      title: 'Gardener Operational Dashboard',
+      subcomponents: ['Navbar.jsx', 'Card.jsx', 'Badge.jsx', 'Button.jsx', 'Input.jsx', 'Footer.jsx']
     },
     '/admin': {
       page: 'AdminDashboardPage.jsx',
-      title: 'Admin Dashboard',
-      layout: 'AdminLayout.jsx',
-      subcomponents: ['RevenueAreaChart.jsx', 'BookingDonutChart.jsx', 'UserTable.jsx'],
-      dataFiles: [],
+      title: 'Administrator Governance Dashboard',
+      subcomponents: ['Navbar.jsx', 'Card.jsx', 'Badge.jsx', 'Button.jsx', 'Footer.jsx']
     },
+    '/login': {
+      page: 'LoginPage.jsx',
+      title: 'Account Authentication & Demo Quick-Login',
+      subcomponents: ['Navbar.jsx', 'Card.jsx', 'Input.jsx', 'Button.jsx', 'Footer.jsx']
+    },
+    '/register': {
+      page: 'RegisterPage.jsx',
+      title: 'Customer Account Registration',
+      subcomponents: ['Navbar.jsx', 'Card.jsx', 'Input.jsx', 'Button.jsx', 'Footer.jsx']
+    },
+    '/about': {
+      page: 'AboutPage.jsx',
+      title: 'About Florva & Practicum Architecture',
+      subcomponents: ['Navbar.jsx', 'Card.jsx', 'Badge.jsx', 'Button.jsx', 'Footer.jsx']
+    },
+    '/contact': {
+      page: 'ContactPage.jsx',
+      title: 'Contact & Support',
+      subcomponents: ['Navbar.jsx', 'Card.jsx', 'Input.jsx', 'Button.jsx', 'Footer.jsx']
+    }
   };
 
   const currentPath = location.pathname;
@@ -84,19 +87,13 @@ export default function DevInspectorBadge() {
       ? 'ProductDetailPage.jsx'
       : currentPath.startsWith('/services/')
       ? 'ServiceDetailPage.jsx'
-      : currentPath.startsWith('/gardener')
-      ? 'GardenerSubPage.jsx'
-      : currentPath.startsWith('/admin')
-      ? 'AdminSubPage.jsx'
       : 'NotFoundPage.jsx',
-    title: 'Unknown Page',
-    layout: currentPath.startsWith('/gardener')
-      ? 'GardenerLayout.jsx'
-      : currentPath.startsWith('/admin')
-      ? 'AdminLayout.jsx'
-      : 'PublicLayout.jsx',
-    subcomponents: ['Navbar.jsx', 'Footer.jsx'],
-    dataFiles: [],
+    title: currentPath.startsWith('/shop/')
+      ? 'Product Details'
+      : currentPath.startsWith('/services/')
+      ? 'Service Booking Details'
+      : 'Page Not Found',
+    subcomponents: ['Navbar.jsx', 'Footer.jsx', 'Button.jsx', 'Card.jsx']
   };
 
   if (isHidden) {
@@ -144,18 +141,11 @@ export default function DevInspectorBadge() {
         </div>
 
         {/* Primary Route & Component Pill */}
-        <div className="px-3 py-2.5 space-y-1">
+        <div className="px-3 py-2 space-y-1">
           <div className="flex items-center gap-1.5">
             <span className="text-sage-400">Route:</span>
-            <span className="text-white font-medium bg-forest-800 px-1.5 py-0.5 rounded text-[11px]">
+            <span className="text-white font-medium bg-forest-800 px-1.5 py-0.5 rounded text-[11px] truncate max-w-[200px]">
               {currentPath}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            <span className="text-sage-400">Title:</span>
-            <span className="text-sage-100 text-[11px]">
-              {match.title || 'Florva'}
             </span>
           </div>
 
@@ -173,15 +163,15 @@ export default function DevInspectorBadge() {
             <div>
               <div className="text-sage-400 flex items-center gap-1 mb-1">
                 <Layers className="w-3 h-3" />
-                <span>Layout Shell:</span>
+                <span>Page Purpose:</span>
               </div>
-              <p className="text-sage-200 pl-4">{match.layout}</p>
+              <p className="text-sage-200 pl-4">{match.title}</p>
             </div>
 
             <div>
               <div className="text-sage-400 flex items-center gap-1 mb-1">
                 <Code2 className="w-3 h-3" />
-                <span>Subcomponents:</span>
+                <span>Components:</span>
               </div>
               <div className="flex flex-wrap gap-1 pl-4">
                 {match.subcomponents.map((comp) => (
@@ -194,26 +184,6 @@ export default function DevInspectorBadge() {
                 ))}
               </div>
             </div>
-
-            {/* Data / Service Files — shown when route has associated mock data */}
-            {match.dataFiles && match.dataFiles.length > 0 && (
-              <div>
-                <div className="text-sage-400 flex items-center gap-1 mb-1">
-                  <Layers className="w-3 h-3" />
-                  <span>Data / API Files:</span>
-                </div>
-                <div className="flex flex-wrap gap-1 pl-4">
-                  {match.dataFiles.map((file) => (
-                    <span
-                      key={file}
-                      className="bg-amber-900/40 text-amber-200 px-1.5 py-0.5 rounded text-[10px] border border-amber-400/20"
-                    >
-                      {file}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         )}
       </div>

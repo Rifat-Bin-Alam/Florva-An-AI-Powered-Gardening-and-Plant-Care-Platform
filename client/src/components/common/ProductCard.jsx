@@ -1,21 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingBag, Star, Sun, Droplets, Heart } from 'lucide-react';
+import { ShoppingBag, Star, Sun, Droplets } from 'lucide-react';
 import clsx from 'clsx';
 import Card from './Card';
 import Badge from './Badge';
 import Button from './Button';
+import { useApp } from '../../context/AppContext';
 
 /**
  * Reusable Product Card for Shop Grids and Homepage Features
  * Displays plant image, pricing in BDT, care quick-stats, and action buttons.
- * Designed for both grid and carousel layouts with hover micro-interactions.
+ * Uses clean botanical styling with natural green accents.
  */
 export default function ProductCard({ product, compact = false, className = '' }) {
+  const { addToCart } = useApp();
+
   const {
     _id, name, slug, category, price, originalPrice,
     image, careLevel, sunlight, waterFrequency,
-    inStock, rating, reviewCount, tags = [],
+    inStock, rating, tags = [],
   } = product;
 
   // Calculate discount percentage if original price exists
@@ -24,14 +27,14 @@ export default function ProductCard({ product, compact = false, className = '' }
     : null;
 
   return (
-    <Card hoverable padding="p-0" className={clsx('group overflow-hidden flex flex-col', className)}>
+    <Card hoverable padding="p-0" className={clsx('overflow-hidden flex flex-col h-full bg-white border border-charcoal-100 rounded-xl', className)}>
       {/* Product Image Container */}
-      <Link to={`/shop/${slug}`} className="block relative overflow-hidden">
-        <div className={clsx('w-full overflow-hidden bg-sage-50', compact ? 'h-40' : 'h-52 sm:h-56')}>
+      <Link to={`/shop/${slug}`} className="block relative overflow-hidden bg-offwhite">
+        <div className={clsx('w-full overflow-hidden', compact ? 'h-40' : 'h-52 sm:h-56')}>
           <img
             src={image}
             alt={name}
-            className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
             loading="lazy"
           />
         </div>
@@ -39,25 +42,16 @@ export default function ProductCard({ product, compact = false, className = '' }
         {/* Overlay Badges — discount tag and stock status */}
         <div className="absolute top-2.5 left-2.5 flex flex-col gap-1.5">
           {discountPercent && (
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500 text-white shadow-sm">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-rose-600 text-white shadow-sm">
               -{discountPercent}% OFF
             </span>
           )}
           {!inStock && (
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-charcoal-700 text-white shadow-sm">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-charcoal-700 text-white shadow-sm">
               Out of Stock
             </span>
           )}
         </div>
-
-        {/* Wishlist Heart Button (decorative, no logic yet) */}
-        <button
-          className="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-charcoal-400 hover:text-rose-500 hover:bg-white transition-all shadow-sm opacity-0 group-hover:opacity-100"
-          title="Add to Wishlist"
-          onClick={(e) => e.preventDefault()}
-        >
-          <Heart className="w-4 h-4" />
-        </button>
 
         {/* Category Label */}
         <div className="absolute bottom-2.5 left-2.5">
@@ -94,23 +88,23 @@ export default function ProductCard({ product, compact = false, className = '' }
           )}
         </div>
 
-        {/* Quick Care Stats — hidden in compact mode */}
+        {/* Quick Care Stats */}
         {!compact && (
           <div className="flex items-center gap-3 text-[11px] text-charcoal-500 mb-3">
             <span className="flex items-center gap-1">
-              <Sun className="w-3 h-3 text-amber-500" />
+              <Sun className="w-3 h-3 text-amber-600" />
               {sunlight}
             </span>
             <span className="flex items-center gap-1">
-              <Droplets className="w-3 h-3 text-sky-500" />
+              <Droplets className="w-3 h-3 text-sky-600" />
               {waterFrequency}
             </span>
           </div>
         )}
 
-        {/* Care Level Tag */}
-        <div className="mt-auto pt-2">
-          <div className="flex items-center justify-between gap-2">
+        {/* Care Level Tag and Add to Cart Action */}
+        <div className="mt-auto pt-2 border-t border-charcoal-50">
+          <div className="flex items-center justify-between gap-2 pt-2">
             <Badge
               variant={careLevel === 'Beginner' ? 'success' : careLevel === 'Intermediate' ? 'warning' : 'danger'}
               size="sm"
@@ -122,6 +116,10 @@ export default function ProductCard({ product, compact = false, className = '' }
               size="sm"
               icon={ShoppingBag}
               disabled={!inStock}
+              onClick={(e) => {
+                e.preventDefault();
+                addToCart(product, 1);
+              }}
               className="text-[11px]"
             >
               {compact ? 'Add' : 'Add to Cart'}

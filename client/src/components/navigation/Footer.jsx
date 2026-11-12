@@ -24,8 +24,8 @@ export default function Footer() {
                 <Truck className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white">Fast Botanical Delivery</h4>
-                <p className="text-xs text-sage-200">Carefully packaged with moisture control</p>
+                <h4 className="text-sm font-semibold text-white">Careful Botanical Delivery</h4>
+                <p className="text-xs text-sage-200">Hydrated root protection packaging</p>
               </div>
             </div>
 
@@ -35,7 +35,7 @@ export default function Footer() {
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-white">AI Botanical Diagnostics</h4>
-                <p className="text-xs text-sage-200">Powered by Google Gemini intelligence</p>
+                <p className="text-xs text-sage-200">Powered by Gemini plant care intelligence</p>
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@ export default function Footer() {
               <span className="text-lg font-bold tracking-tight text-white">FLORVA</span>
             </div>
             <p className="text-xs text-sage-200 leading-relaxed">
-              An intelligent, university practicum-engineered platform connecting plant lovers with premium botanical specimens, expert gardening services, and AI-guided care.
+              An AI-powered gardening and plant care platform designed to help urban plant lovers discover resilient botanicals, schedule expert horticulture services, and nurture their indoor jungle.
             </p>
           </div>
 
@@ -62,21 +62,21 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-semibold text-sage-300 uppercase tracking-wider mb-3">Botanical Store</h4>
             <ul className="space-y-2 text-xs text-sage-200">
-              <li><Link to="/shop" className="hover:text-white transition-colors">Indoor Air Purifiers</Link></li>
-              <li><Link to="/shop" className="hover:text-white transition-colors">Flowering Beauties</Link></li>
-              <li><Link to="/shop" className="hover:text-white transition-colors">Succulents & Cacti</Link></li>
-              <li><Link to="/shop" className="hover:text-white transition-colors">Organic Potting Mixes</Link></li>
+              <li><Link to="/shop" className="hover:text-white transition-colors">All Plant Varieties</Link></li>
+              <li><Link to="/shop?category=Indoor" className="hover:text-white transition-colors">Indoor Air Purifiers</Link></li>
+              <li><Link to="/shop?category=Flowering" className="hover:text-white transition-colors">Flowering Beauties</Link></li>
+              <li><Link to="/shop?category=Succulent" className="hover:text-white transition-colors">Resilient Succulents</Link></li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-xs font-semibold text-sage-300 uppercase tracking-wider mb-3">Horticulture Services</h4>
+            <h4 className="text-xs font-semibold text-sage-300 uppercase tracking-wider mb-3">Gardening Services</h4>
             <ul className="space-y-2 text-xs text-sage-200">
-              <li><Link to="/services" className="hover:text-white transition-colors">Balcony Garden Setup</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Plant Health Consultations</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Seasonal Repotting & Soil</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Organic Pest Treatment</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">All Services</Link></li>
+              <li><Link to="/services/balcony-garden-setup" className="hover:text-white transition-colors">Balcony Garden Setup</Link></li>
+              <li><Link to="/services/plant-health-consultation" className="hover:text-white transition-colors">Doctor Health Visit</Link></li>
+              <li><Link to="/services/seasonal-repotting-soil-refresh" className="hover:text-white transition-colors">Repotting & Soil Refresh</Link></li>
             </ul>
           </div>
 
@@ -84,10 +84,10 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-semibold text-sage-300 uppercase tracking-wider mb-3">Platform Portals</h4>
             <ul className="space-y-2 text-xs text-sage-200">
-              <li><Link to="/login" className="hover:text-white transition-colors">Customer Portal</Link></li>
-              <li><Link to="/login" className="hover:text-white transition-colors">Gardener Dashboard</Link></li>
-              <li><Link to="/login" className="hover:text-white transition-colors">Administrator Access</Link></li>
-              <li><Link to="/my-plants" className="hover:text-white transition-colors">My Plants Journal</Link></li>
+              <li><Link to="/my-plants" className="hover:text-white transition-colors">Customer "My Plants" Journal</Link></li>
+              <li><Link to="/gardener" className="hover:text-white transition-colors">Gardener Operational Portal</Link></li>
+              <li><Link to="/admin" className="hover:text-white transition-colors">Administrator Dashboard</Link></li>
+              <li><Link to="/about" className="hover:text-white transition-colors">About & Practicum Overview</Link></li>
             </ul>
           </div>
         </div>
