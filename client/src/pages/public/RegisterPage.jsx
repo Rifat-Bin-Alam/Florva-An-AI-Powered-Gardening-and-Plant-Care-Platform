@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Sprout, User, Mail, Lock, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { Sprout, User, Mail, Lock, Phone, MapPin, AlertCircle, ArrowRight } from 'lucide-react';
 import Button from '../../components/common/Button';
 import Card from '../../components/common/Card';
 import Input from '../../components/common/Input';
@@ -8,11 +8,12 @@ import { useApp } from '../../context/AppContext';
 
 /**
  * RegisterPage — Customer Registration Form
- * Creates a new customer profile and redirects to the "My Plants" dashboard.
+ * Creates a real customer profile in MongoDB Atlas via /api/auth/register.
  */
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const { setCurrentUser, showToast } = useApp();
+  const { register, authLoading } = useApp();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -22,21 +23,24 @@ export default function RegisterPage() {
     address: ''
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage('');
 
-    const newUser = {
-      _id: `usr_${Date.now()}`,
+    const res = await register({
       name: formData.name,
       email: formData.email,
-      role: 'customer',
+      password: formData.password,
       phone: formData.phone,
-      address: formData.address
-    };
+      address: { street: formData.address, country: 'Bangladesh' },
+      role: 'customer'
+    });
 
-    setCurrentUser(newUser);
-    showToast(`Welcome to Florva, ${formData.name}!`, 'success');
-    navigate('/my-plants');
+    if (res.success) {
+      navigate('/my-plants');
+    } else {
+      setErrorMessage(res.error || 'Registration failed. Please check inputs.');
+    }
   };
 
   return (
@@ -50,6 +54,14 @@ export default function RegisterPage() {
           <h1 className="text-2xl font-bold text-forest-900">Create Florva Account</h1>
           <p className="text-xs text-charcoal-500">Join our urban botanical gardening community</p>
         </div>
+
+        {/* Error Alert */}
+        {errorMessage && (
+          <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-2.5 text-xs text-rose-800">
+            <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+            <p className="font-semibold">{errorMessage}</p>
+          </div>
+        )}
 
         {/* Registration Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -76,9 +88,10 @@ export default function RegisterPage() {
             label="Password *"
             type="password"
             required
+            minLength={6}
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            placeholder="••••••••"
+            placeholder="Minimum 6 characters"
             icon={Lock}
           />
 
@@ -98,7 +111,15 @@ export default function RegisterPage() {
             icon={MapPin}
           />
 
-          <Button type="submit" variant="primary" size="lg" className="w-full" icon={ArrowRight}>
+          <Button
+            type="submit"
+            variant="primary"
+            size="lg"
+            className="w-full"
+            icon={ArrowRight}
+            isLoading={authLoading}
+            disabled={authLoading}
+          >
             Create Customer Account
           </Button>
         </form>
