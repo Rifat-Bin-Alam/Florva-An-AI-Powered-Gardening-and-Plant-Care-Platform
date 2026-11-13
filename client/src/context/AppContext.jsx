@@ -16,7 +16,9 @@ const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
   // ─── 1. User & Authentication State ───
-  // Default to a logged-in customer for effortless practicum demonstration
+  // Initialized from localStorage
+  const [token, setToken] = useState(() => localStorage.getItem('florva_token') || '');
+  const [authLoading, setAuthLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(() => {
     const saved = localStorage.getItem('florva_user');
     return saved ? JSON.parse(saved) : {
@@ -30,8 +32,94 @@ export function AppProvider({ children }) {
   });
 
   useEffect(() => {
-    localStorage.setItem('florva_user', JSON.stringify(currentUser));
+    if (currentUser) {
+      localStorage.setItem('florva_user', JSON.stringify(currentUser));
+    }
   }, [currentUser]);
+
+  // Helper to safely parse JSON responses without throwing "Unexpected end of JSON input"
+  const safeParseJSON = async (response) => {
+    const text = await response.text();
+    if (!text || text.trim() === '') {
+      throw new Error('Backend server is not running or returned an empty response. Please start the server on port 5000 using: cd server && npm.cmd run dev');
+    }
+    try {
+      return JSON.parse(text);
+    } catch (parseErr) {
+      throw new Error('Backend server is not running or returned an invalid response. Please start the server on port 5000 using: cd server && npm.cmd run dev');
+    }
+  };
+
+  // Real backend API login
+  const login = async (email, password) => {
+    setAuthLoading(true);
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await safeParseJSON(response);
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Invalid email or password');
+      }
+
+      setToken(data.token);
+      setCurrentUser(data.user);
+      localStorage.setItem('florva_token', data.token);
+      localStorage.setItem('florva_user', JSON.stringify(data.user));
+      showToast(`Welcome back, ${data.user.name}!`, 'success');
+      return { success: true, user: data.user };
+    } catch (error) {
+      const msg = error.message.includes('Failed to fetch') || error.message.includes('NetworkError')
+        ? 'Cannot connect to backend server. Please start the server: cd server && npm.cmd run dev'
+        : error.message;
+      return { success: false, error: msg };
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  // Real backend API register
+  const register = async (userData) => {
+    setAuthLoading(true);
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData)
+      });
+      const data = await safeParseJSON(response);
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Registration failed');
+      }
+
+      setToken(data.token);
+      setCurrentUser(data.user);
+      localStorage.setItem('florva_token', data.token);
+      localStorage.setItem('florva_user', JSON.stringify(data.user));
+      showToast(`Welcome to Florva, ${data.user.name}!`, 'success');
+      return { success: true, user: data.user };
+    } catch (error) {
+      const msg = error.message.includes('Failed to fetch') || error.message.includes('NetworkError')
+        ? 'Cannot connect to backend server. Please start the server: cd server && npm.cmd run dev'
+        : error.message;
+      return { success: false, error: msg };
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  // Logout
+  const logout = () => {
+    setToken('');
+    setCurrentUser(null);
+    localStorage.removeItem('florva_token');
+    localStorage.removeItem('florva_user');
+    showToast('Logged out successfully', 'info');
+  };
 
   // Quick switch role helper (for demonstration ease)
   const switchRole = (role) => {
@@ -426,6 +514,11 @@ export function AppProvider({ children }) {
         currentUser,
         setCurrentUser,
         switchRole,
+        token,
+        authLoading,
+        login,
+        register,
+        logout,
         products,
         services: mockServicesData,
         updateProductStock,

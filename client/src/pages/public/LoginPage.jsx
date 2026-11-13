@@ -1,42 +1,65 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Sprout, Mail, Lock, User, Shield, Wrench, ArrowRight } from 'lucide-react';
+import { Sprout, Mail, Lock, AlertCircle, ArrowRight, CheckCircle2 } from 'lucide-react';
 import Button from '../../components/common/Button';
 import Card from '../../components/common/Card';
-import Badge from '../../components/common/Badge';
 import Input from '../../components/common/Input';
 import { useApp } from '../../context/AppContext';
 
 /**
  * LoginPage — Account Access & Demonstration Role Quick-Fill
- * Provides standard authentication and 1-click test role logins
- * for the university practicum supervisor presentation.
+ * Authenticates against MongoDB Atlas via /api/auth/login,
+ * with graceful fallback to demo mode for university defense.
  */
 export default function LoginPage() {
   const navigate = useNavigate();
-  const { switchRole, setCurrentUser } = useApp();
+  const { login, switchRole, authLoading } = useApp();
   const [email, setEmail] = useState('customer@florva.com');
   const [password, setPassword] = useState('Password123!');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (email.includes('gardener')) {
-      switchRole('gardener');
-      navigate('/gardener');
-    } else if (email.includes('admin')) {
-      switchRole('admin');
-      navigate('/admin');
-    } else {
-      switchRole('customer');
-      navigate('/my-plants');
-    }
-  };
-
-  const handleQuickLogin = (role) => {
-    switchRole(role);
+  const navigateByRole = (role) => {
     if (role === 'gardener') navigate('/gardener');
     else if (role === 'admin') navigate('/admin');
     else navigate('/my-plants');
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setErrorMessage('');
+
+    const res = await login(email, password);
+    if (res.success) {
+      navigateByRole(res.user.role);
+    } else {
+      setErrorMessage(res.error || 'Authentication failed. Please verify credentials.');
+    }
+  };
+
+  const handleQuickLogin = async (role) => {
+    setErrorMessage('');
+    const demoAccounts = {
+      customer: { email: 'customer@florva.com', password: 'Password123!' },
+      gardener: { email: 'gardener@florva.com', password: 'Password123!' },
+      admin: { email: 'admin@florva.com', password: 'Password123!' }
+    };
+
+    const target = demoAccounts[role];
+    if (target) {
+      setEmail(target.email);
+      setPassword(target.password);
+
+      // Attempt live database login first
+      const res = await login(target.email, target.password);
+      if (res.success) {
+        navigateByRole(res.user.role);
+        return;
+      }
+    }
+
+    // Graceful fallback for defense presentation if database is not active
+    switchRole(role);
+    navigateByRole(role);
   };
 
   return (
@@ -53,33 +76,59 @@ export default function LoginPage() {
 
         {/* Quick Demo Login Triggers for Defense */}
         <div className="bg-offwhite rounded-xl p-3 border border-charcoal-200/80 space-y-2">
-          <span className="text-[10px] font-bold text-charcoal-500 uppercase tracking-wider block text-center">
-            Practicum Demonstration Quick-Login
-          </span>
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-bold text-charcoal-500 uppercase tracking-wider block">
+              Practicum 1-Click Quick Login
+            </span>
+            <span className="text-[10px] text-forest font-medium">MongoDB + Demo</span>
+          </div>
           <div className="grid grid-cols-3 gap-1.5">
             <button
               type="button"
+              disabled={authLoading}
               onClick={() => handleQuickLogin('customer')}
-              className="py-1.5 px-2 rounded-lg bg-white hover:bg-forest hover:text-white border border-charcoal-200 text-xs font-semibold text-forest transition-colors shadow-2xs"
+              className="py-1.5 px-2 rounded-lg bg-white hover:bg-forest hover:text-white border border-charcoal-200 text-xs font-semibold text-forest transition-colors shadow-2xs disabled:opacity-50"
             >
               Customer
             </button>
             <button
               type="button"
+              disabled={authLoading}
               onClick={() => handleQuickLogin('gardener')}
-              className="py-1.5 px-2 rounded-lg bg-white hover:bg-amber-600 hover:text-white border border-charcoal-200 text-xs font-semibold text-amber-800 transition-colors shadow-2xs"
+              className="py-1.5 px-2 rounded-lg bg-white hover:bg-amber-600 hover:text-white border border-charcoal-200 text-xs font-semibold text-amber-800 transition-colors shadow-2xs disabled:opacity-50"
             >
               Gardener
             </button>
             <button
               type="button"
+              disabled={authLoading}
               onClick={() => handleQuickLogin('admin')}
-              className="py-1.5 px-2 rounded-lg bg-white hover:bg-rose-700 hover:text-white border border-charcoal-200 text-xs font-semibold text-rose-800 transition-colors shadow-2xs"
+              className="py-1.5 px-2 rounded-lg bg-white hover:bg-rose-700 hover:text-white border border-charcoal-200 text-xs font-semibold text-rose-800 transition-colors shadow-2xs disabled:opacity-50"
             >
               Admin
             </button>
           </div>
         </div>
+
+        {/* Error Notification Alert */}
+        {errorMessage && (
+          <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-2.5 text-xs text-rose-800">
+            <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+            <div className="space-y-1">
+              <p className="font-semibold">{errorMessage}</p>
+              <button
+                type="button"
+                onClick={() => {
+                  switchRole('customer');
+                  navigate('/my-plants');
+                }}
+                className="text-[11px] text-forest font-bold underline hover:text-forest-800"
+              >
+                Or continue with Offline Demo Mode &rarr;
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Standard Credentials Form */}
         <form onSubmit={handleLogin} className="space-y-4">
@@ -90,6 +139,7 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             icon={Mail}
+            placeholder="e.g. customer@florva.com"
           />
 
           <Input
@@ -99,9 +149,18 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             icon={Lock}
+            placeholder="••••••••"
           />
 
-          <Button type="submit" variant="primary" size="lg" className="w-full" icon={ArrowRight}>
+          <Button
+            type="submit"
+            variant="primary"
+            size="lg"
+            className="w-full"
+            icon={ArrowRight}
+            isLoading={authLoading}
+            disabled={authLoading}
+          >
             Sign In to Account
           </Button>
         </form>
