@@ -231,3 +231,64 @@ Refine the existing frontend UI to make it look professional, clean, modern, and
 - Preserved strict privacy standards: zero occurrences of student ID or supervisor name.
 
 ---
+
+## 📅 Log Entry: 2026-11-24 — Phase 2B: Premium Botanical UI/UX Refinement & Complete Theme Switching System
+
+### Objective & Architectural Directives:
+- Comprehensive UI/UX refinement across all 15 pages and all shared components.
+- Implementation of a complete, persistent light/dark mode theme system (`darkMode: 'class'`).
+- Dedicated botanical Obsidian Night palette (`#0C130F`, `#131D17`, `#1B2921`, `#23372B`) avoiding harsh neutral grays or simple color inversion.
+- Strict design-only scope: no backend, API, database, or authentication logic modified; all interactive mock state preserved.
+
+### Key Refinements Implemented:
+
+1. **Botanical Theme Tokens & Infrastructure:**
+   - `client/tailwind.config.js`:
+     - Added `darkMode: 'class'`.
+     - Standardized `offwhite.DEFAULT` to `#F8FAFA`.
+     - Added semantic Obsidian Night palette: `950: '#070C09'`, `900: '#0C130F'`, `800: '#131D17'`, `700: '#1B2921'`, `600: '#23372B'`, `500: '#304A3B'`.
+     - Added `shadow-botanical-dark` elevation token.
+   - `client/index.html`:
+     - Injected synchronous zero-flash `<head>` script reading `localStorage.getItem('florva_theme')` or system `window.matchMedia('(prefers-color-scheme: dark)')` to prevent theme flash before React mount.
+   - `client/src/index.css`:
+     - Configured dark root color-scheme, dark body defaults, and custom dark botanical scrollbars.
+   - `client/src/context/AppContext.jsx`:
+     - Added `theme` state (`light` / `dark`), `toggleTheme()` handler, and `localStorage` persistence.
+     - Replaced jarring `animate-bounce` alert with a refined slide-in botanical notification card compatible with light and dark modes.
+
+2. **Shared Components Polish:**
+   - `Button.jsx`: Refined contrast, dark mode variants for all 6 styles, focus-ring offsets (`dark:focus:ring-offset-night-900`), and loading state spinners.
+   - `Input.jsx`: Added dark mode inputs (`dark:bg-night-800 dark:border-night-600 dark:text-gray-100 dark:placeholder-gray-500`), focus rings, and dark helper text.
+   - `Card.jsx`: Added `dark:bg-night-800 dark:border-night-600 dark:shadow-botanical-dark` styling.
+   - `Badge.jsx`: Added dark mode variants for all 6 badge styles (`default`, `forest`, `success`, `warning`, `danger`, `info`).
+   - `Loader.jsx`: Styled spinner for dark backgrounds.
+   - `ProductCard.jsx`: Refined image ratios, category badges, BDT price typography, and hover elevations.
+   - `ServiceCard.jsx`: Styled service duration pills, inclusions lists, and card borders for light and dark modes.
+   - `TestimonialCard.jsx`: Refined quotes, star ratings, and avatar styling.
+   - `PlantChatbot.jsx`: Fully styled floating drawer, prompt chips, speech bubbles, and text input for dark mode.
+   - `Navbar.jsx`: Integrated Sun/Moon theme toggle in both desktop header and mobile drawer; polished brand typography and demonstration role switcher.
+   - `Footer.jsx`: Dark mode styling across guarantee banner, navigation links, and student copyright notice.
+
+3. **Page-by-Page Refinement:**
+   - `HomePage.jsx`: Refined all 7 sections (Hero, How It Works, Popular Botanicals, Services Preview, Testimonials, Live Statistics, and CTA Banner).
+   - `ShopPage.jsx`: Polished search bar, category chips, care level filters, sorting dropdown, and empty search state.
+   - `ProductDetailPage.jsx`: Refined breadcrumbs, botanical specs matrix, quantity stepper, add-to-cart/adopt actions, care tabs, and related plants.
+   - `ServicesPage.jsx`: Refined category chips, service cards, and 3-step booking explainer.
+   - `ServiceDetailPage.jsx`: Polished booking confirmation screen, service details, time-slot selector, and booking form.
+   - `CartPage.jsx`: Refined line item table, quantity steppers, delete actions, and order summary card.
+   - `CheckoutPage.jsx`: Polished delivery address inputs, sandbox payment radio options, order review summary, and confirmation receipt screen.
+   - `LoginPage.jsx` & `RegisterPage.jsx`: Refined login card, demo 1-click quick-login pills, inputs, and error alerts.
+   - `MyPlantsPage.jsx`: Polished Plant Journal tab (watering alert banner, plant cards with countdowns, add plant modal), Order History tab, and Service Bookings tab.
+   - `GardenerDashboardPage.jsx`: Polished KPI statistic cards, monthly revenue SVG chart, stock adjustment table, incoming appointment cards & decline modal, and order fulfillment table.
+   - `AdminDashboardPage.jsx`: Polished executive KPI metrics, revenue trajectory chart, appointment outcome progress bars, user account governance table with status toggle, payment audit logs table with IPN verification tags, and categories manager.
+   - `AboutPage.jsx`: Polished hero, mission/vision cards, core values grid, developer profile card, and tech stack badges.
+   - `ContactPage.jsx`: Polished contact info cards, message form, and interactive FAQ accordion.
+   - `NotFoundPage.jsx`: Polished 404 error card, rotating compass icon, and return navigation button.
+
+### Verification & Build Audit:
+- Executed `Set-Location d:\IUBAT\Practicum\Project\V1\client; npm.cmd run build` — compiled **1,598 modules in 3.38s with 0 errors and 0 warnings**.
+- Verified theme switching persistence in `localStorage` (`florva_theme`).
+- Verified zero-flash script in `index.html`.
+- Verified mobile drawer theme toggle and layout responsiveness across all breakpoints.
+
+---

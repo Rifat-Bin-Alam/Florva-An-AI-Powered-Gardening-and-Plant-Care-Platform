@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { CheckCircle2, AlertCircle, Info, X } from 'lucide-react';
 import mockProductsData from '../data/mockProducts';
 import mockServicesData from '../data/mockServices';
 
@@ -30,6 +31,26 @@ export function AppProvider({ children }) {
       address: 'House 12, Road 4, Sector 10, Uttara, Dhaka'
     };
   });
+
+  // ─── Theme State (Light / Dark Mode) ───
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('florva_theme');
+    if (saved) return saved;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('florva_theme', theme);
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   useEffect(() => {
     if (currentUser) {
@@ -544,25 +565,31 @@ export function AppProvider({ children }) {
         markPlantFertilized,
         removePersonalPlant,
         toast,
-        showToast
+        showToast,
+        theme,
+        toggleTheme
       }}
     >
       {children}
 
-      {/* Lightweight Botanical Floating Toast Alert */}
+      {/* Modern Botanical Toast Notification */}
       {toast && (
-        <div className="fixed bottom-6 right-6 z-50 animate-bounce duration-300">
-          <div className={`px-4 py-3 rounded-xl shadow-botanical-lg border text-sm font-medium flex items-center gap-2.5 ${
+        <div className="fixed bottom-6 right-6 z-50 transition-all duration-300 ease-out transform translate-y-0 opacity-100">
+          <div className={`px-4 py-3 rounded-xl shadow-botanical-lg border text-xs sm:text-sm font-medium flex items-center gap-3 backdrop-blur-md transition-colors ${
             toast.type === 'success'
-              ? 'bg-forest-900 text-white border-forest-700'
+              ? 'bg-forest text-white border-forest-600 dark:bg-forest-900/90 dark:border-forest-700'
               : toast.type === 'info'
-              ? 'bg-sage-100 text-forest-900 border-sage-300'
-              : 'bg-rose-50 text-rose-900 border-rose-200'
+              ? 'bg-white text-charcoal-800 border-charcoal-200 dark:bg-night-800 dark:text-gray-100 dark:border-night-600'
+              : 'bg-rose-50 text-rose-900 border-rose-200 dark:bg-rose-950/90 dark:text-rose-200 dark:border-rose-800'
           }`}>
-            <span className={`w-2 h-2 rounded-full ${
-              toast.type === 'success' ? 'bg-emerald-400' : 'bg-forest-600'
-            }`} />
-            <span>{toast.message}</span>
+            {toast.type === 'success' ? (
+              <CheckCircle2 className="w-4 h-4 text-sage-300 flex-shrink-0" />
+            ) : toast.type === 'info' ? (
+              <Info className="w-4 h-4 text-forest flex-shrink-0 dark:text-sage-400" />
+            ) : (
+              <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0 dark:text-rose-400" />
+            )}
+            <span className="leading-snug">{toast.message}</span>
           </div>
         </div>
       )}

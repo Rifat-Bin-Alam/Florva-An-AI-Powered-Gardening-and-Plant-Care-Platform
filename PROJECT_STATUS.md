@@ -2,9 +2,9 @@
 
 **Academic Practicum Project**  
 **Student Name:** Rifat Bin Alam  
-**Current Date:** November 12, 2026  
-**Active Phase:** Phase 2 (All UI Views & Mock State Flow Refinement - Complete & Verified)  
-**Development Progress:** Full Frontend UI Suite Implemented — Public, Customer, Gardener, and Admin views active with interactive mock state, ready for practicum demonstration
+**Current Date:** November 24, 2026  
+**Active Phase:** Phase 2 (Phase 2B: Premium Botanical UI/UX Refinement & Complete Theme Switching — Complete & Verified)  
+**Development Progress:** Full Frontend UI Suite Refined — Botanical Design Tokens, Dark Obsidian Palette, Theme Switching (Light/Dark), and Responsive Polish across all Public, Customer, Gardener, and Admin views active with interactive mock state, ready for practicum demonstration
 
 ---
 
@@ -14,32 +14,35 @@
 | :--- | :--- | :---: | :---: | :---: |
 | **Phase 0** | **Project Master Planning & Architectural Refinements** | **COMPLETED & REFINED** | **YES** | Week 0 |
 | **Phase 1** | **Project Scaffolding & Foundation (Client + Server + Dev Badge)** | **COMPLETED** | **YES (Tested)** | Week 1 |
-| **Phase 2** | **Frontend UI Refinement & Simplification (All Roles & Views)** | **COMPLETED** | **YES (Build + Dev Tested)** | Week 2-3 (Current) |
-| **Phase 3** | Backend Database & Real Auth Integration (MongoDB + JWT) | PENDING | NOT STARTED | Week 4-5 |
-| **Phase 4** | Real Gardener & Customer Order/Booking Backend API | PENDING | NOT STARTED | Week 6-7 |
-| **Phase 5** | Sandbox Payment Gateway (SSLCommerz) & Gemini AI Integration | PENDING | NOT STARTED | Week 8-9 |
-| **Phase 6** | End-to-End Verification & Practicum Defense Prep | PENDING | NOT STARTED | Week 10+ |
+| **Phase 2A** | **Frontend UI Prototype & Mock State (All Roles & Views)** | **COMPLETED** | **YES (Tested)** | Week 2-3 |
+| **Phase 2B** | **Premium UI/UX Design Refinement & Light/Dark Theme Switching** | **COMPLETED** | **YES (Build + Dev Tested)** | Week 3-4 (Current) |
+| **Phase 3** | Backend Database & Real Auth Integration (MongoDB + JWT) | PENDING | NOT STARTED | Week 5-6 |
+| **Phase 4** | Real Gardener & Customer Order/Booking Backend API | PENDING | NOT STARTED | Week 7-8 |
+| **Phase 5** | Sandbox Payment Gateway (SSLCommerz) & Gemini AI Integration | PENDING | NOT STARTED | Week 9-10 |
+| **Phase 6** | End-to-End Verification & Practicum Defense Prep | PENDING | NOT STARTED | Week 11+ |
 
 ---
 
-## 📋 Frontend UI Refinement Deliverables Verification Matrix
+## 📋 Frontend UI & Theme Refinement Deliverables Verification Matrix
 
 | Component / Subsystem | Implementation File | Verification Test | Status |
 | :--- | :--- | :--- | :---: |
-| **Application State & Demo Switcher** | `context/AppContext.jsx` | React Context managing Customer, Gardener & Admin roles, Cart, Orders, Bookings, Plants | **VERIFIED** |
-| **Florva AI Botanical Assistant** | `components/common/PlantChatbot.jsx` | Floating botanical drawer with quick prompt chips & real-time conversational UI | **VERIFIED** |
-| **Shop & Catalog Page** | `pages/public/ShopPage.jsx` | Search, category filtering, difficulty pills, sorting, and responsive product grid | **VERIFIED** |
-| **Product Detail Page** | `pages/public/ProductDetailPage.jsx` | Botanical specs, quantity adjustments, Add-to-Cart & Adopt-to-Journal actions | **VERIFIED** |
-| **Services Listing Page** | `pages/public/ServicesPage.jsx` | Categorized gardening services with 3-step scheduling process guide | **VERIFIED** |
-| **Service Detail & Booking Page** | `pages/public/ServiceDetailPage.jsx` | Inclusions preview, interactive appointment date/slot selector, and booking confirmation | **VERIFIED** |
-| **Shopping Cart Page** | `pages/public/CartPage.jsx` | Quantity counters, item deletion, live subtotal, and dynamic BDT delivery calculations | **VERIFIED** |
-| **Checkout & Sandbox Payment** | `pages/public/CheckoutPage.jsx` | Delivery form, SSLCommerz/Stripe sandbox selector, and instant order receipt screen | **VERIFIED** |
-| **Customer My Plants & Care Journal** | `pages/public/MyPlantsPage.jsx` | Plant care schedule, "Needs Water Today" alert, 1-click water button, Add Plant modal | **VERIFIED** |
-| **Gardener Operational Dashboard** | `pages/public/GardenerDashboardPage.jsx` | Operational KPIs, revenue SVG chart, inventory stock +/- buttons, booking accept/reject | **VERIFIED** |
-| **Admin Governance Dashboard** | `pages/public/AdminDashboardPage.jsx` | Platform GMV, user account status toggle, catalog management, payment audit log | **VERIFIED** |
-| **Auth Pages (Login & Register)** | `pages/public/LoginPage.jsx`, `RegisterPage.jsx` | 1-click Practicum Quick-Login for all 3 roles, clean registration form | **VERIFIED** |
-| **Dev Route Inspector** | `dev/DevInspectorBadge.jsx` | Floating inspector with updated route mappings for all new customer & dashboard pages | **VERIFIED** |
-| **Production Client Build** | `npm.cmd run build` | ✓ 1,598 modules transformed in 5.67s (0 errors, 0 warnings) | **VERIFIED** |
+| **Botanical Design Tokens** | `tailwind.config.js`, `index.css` | Forest Green (`#174D32`), Sage Green (`#A8C5A0`), Off-White (`#F8FAFA`), Charcoal (`#1F2937`), and Obsidian Night tokens (`#070C09` to `#304A3B`) | **VERIFIED** |
+| **Theme Engine & Zero-Flash** | `index.html`, `AppContext.jsx` | Inline `<head>` theme detection script, `localStorage` (`florva_theme`) persistence, and system preference detection | **VERIFIED** |
+| **Sun/Moon Theme Toggle** | `components/navigation/Navbar.jsx` | Accessible theme switchers in desktop navbar actions and mobile navigation drawer | **VERIFIED** |
+| **Botanical Notification System** | `context/AppContext.jsx` | Clean slide-in botanical notification card replacing jarring bounce alerts, styled for light and dark modes | **VERIFIED** |
+| **Shared Atomic Components** | `Button.jsx`, `Input.jsx`, `Card.jsx`, `Badge.jsx`, `Loader.jsx` | Complete dark mode variants, subtle borders, focus rings, and hover states across all components | **VERIFIED** |
+| **Display Components** | `ProductCard.jsx`, `ServiceCard.jsx`, `TestimonialCard.jsx` | Balanced elevation, botanical tags, currency typography, and dark mode obsidian surfaces | **VERIFIED** |
+| **AI Botanical Assistant** | `components/common/PlantChatbot.jsx` | Full obsidian dark theme drawer, smooth animations, prompt chips, and message bubble contrast | **VERIFIED** |
+| **Public Showcase Pages** | `HomePage.jsx`, `AboutPage.jsx`, `ContactPage.jsx`, `NotFoundPage.jsx` | Natural art-direction, subtle gradients, clean typography hierarchy, FAQ accordion, and dark mode support | **VERIFIED** |
+| **Catalog & Booking Pages** | `ShopPage.jsx`, `ProductDetailPage.jsx`, `ServicesPage.jsx`, `ServiceDetailPage.jsx` | Refined filter pills, care attribute matrices, interactive date/slot selectors, and responsive grids | **VERIFIED** |
+| **E-Commerce Checkout Flow** | `CartPage.jsx`, `CheckoutPage.jsx` | Line item tables, quantity steppers, summary cards, and sandbox payment radio options | **VERIFIED** |
+| **Customer My Plants Journal** | `pages/public/MyPlantsPage.jsx` | Water countdown alerts, single-click care reset, add plant modal, order history, and bookings tabs | **VERIFIED** |
+| **Gardener Operational Portal** | `pages/public/GardenerDashboardPage.jsx` | High-density operational KPIs, monthly sales chart, inventory stock adjustments, and booking management | **VERIFIED** |
+| **Admin Governance Portal** | `pages/public/AdminDashboardPage.jsx` | Platform KPIs, trajectory charts, account status toggles, categories manager, and payment audit logs | **VERIFIED** |
+| **Practicum Auth Suite** | `LoginPage.jsx`, `RegisterPage.jsx` | 1-click Quick-Login demonstration pills for all 3 roles, clean inputs, and role switcher integration | **VERIFIED** |
+| **Dev Route Inspector** | `dev/DevInspectorBadge.jsx` | Development-only floating inspector with route mappings and responsive toggle | **VERIFIED** |
+| **Production Client Build** | `npm.cmd run build` | ✓ 1,598 modules transformed in 3.38s (0 errors, 0 warnings) | **VERIFIED** |
 
 ---
 
@@ -49,4 +52,4 @@
 ---
 
 ## 🎯 Next Immediate Task
-UI refinement is complete and verified. Awaiting student evaluation of the refined UI views. Upon review, proceed to **Phase 3: Backend Database & Real Authentication Integration (MongoDB Atlas + JWT + API Endpoints)**.
+UI/UX refinement and theme switching system are complete and verified. Awaiting review. Upon confirmation, proceed to **Phase 3: Backend Database & Real Authentication Integration (MongoDB Atlas + JWT + API Endpoints)**.

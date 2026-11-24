@@ -58,18 +58,18 @@ export default function AdminDashboardPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
       {/* ─── Admin Header ─── */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-charcoal-200 pb-5">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-charcoal-200 dark:border-night-700 pb-5">
         <div className="space-y-1">
           <Badge variant="danger" size="md" icon={Shield}>Administrator Governance View</Badge>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-forest-900">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-forest-900 dark:text-gray-100">
             System Administration & Audit
           </h1>
-          <p className="text-xs text-charcoal-500">
+          <p className="text-xs text-charcoal-500 dark:text-charcoal-400">
             Platform-wide governance, user account management, and financial transaction supervision
           </p>
         </div>
 
-        <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-rose-50 text-rose-800 border border-rose-200 flex items-center gap-1.5">
+        <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-rose-50 dark:bg-rose-950/50 text-rose-800 dark:text-rose-200 border border-rose-200 dark:border-rose-800/60 flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-rose-600 animate-pulse" />
           Superadmin Protected Mode
         </span>
@@ -77,41 +77,41 @@ export default function AdminDashboardPage() {
 
       {/* ─── Metric Cards Grid ─── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        <Card className="p-5 border-charcoal-200/80 space-y-2">
-          <span className="text-xs text-charcoal-500 font-semibold uppercase tracking-wider block">Gross Merchandise Value</span>
-          <div className="text-2xl sm:text-3xl font-extrabold text-forest-900">
+        <Card className="p-5 border-charcoal-200/80 dark:border-night-600 space-y-2 bg-white dark:bg-night-800">
+          <span className="text-xs text-charcoal-500 dark:text-charcoal-400 font-semibold uppercase tracking-wider block">Gross Merchandise Value</span>
+          <div className="text-2xl sm:text-3xl font-extrabold text-forest-900 dark:text-gray-100">
             ৳{totalGMV.toLocaleString()}
           </div>
-          <span className="text-[11px] text-emerald-700 font-medium">All-time platform revenue</span>
+          <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-medium">All-time platform revenue</span>
         </Card>
 
-        <Card className="p-5 border-charcoal-200/80 space-y-2">
-          <span className="text-xs text-charcoal-500 font-semibold uppercase tracking-wider block">Total Customer Orders</span>
-          <div className="text-2xl sm:text-3xl font-extrabold text-forest-900">
+        <Card className="p-5 border-charcoal-200/80 dark:border-night-600 space-y-2 bg-white dark:bg-night-800">
+          <span className="text-xs text-charcoal-500 dark:text-charcoal-400 font-semibold uppercase tracking-wider block">Total Customer Orders</span>
+          <div className="text-2xl sm:text-3xl font-extrabold text-forest-900 dark:text-gray-100">
             {orders.length + 80}
           </div>
-          <span className="text-[11px] text-forest-700 font-medium">96% fulfillment rate</span>
+          <span className="text-[11px] text-forest-700 dark:text-sage-400 font-medium">96% fulfillment rate</span>
         </Card>
 
-        <Card className="p-5 border-charcoal-200/80 space-y-2">
-          <span className="text-xs text-charcoal-500 font-semibold uppercase tracking-wider block">Service Appointments</span>
-          <div className="text-2xl sm:text-3xl font-extrabold text-forest-900">
+        <Card className="p-5 border-charcoal-200/80 dark:border-night-600 space-y-2 bg-white dark:bg-night-800">
+          <span className="text-xs text-charcoal-500 dark:text-charcoal-400 font-semibold uppercase tracking-wider block">Service Appointments</span>
+          <div className="text-2xl sm:text-3xl font-extrabold text-forest-900 dark:text-gray-100">
             {bookings.length + 30}
           </div>
-          <span className="text-[11px] text-emerald-700 font-medium">88% completed</span>
+          <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-medium">88% completed</span>
         </Card>
 
-        <Card className="p-5 border-charcoal-200/80 space-y-2">
-          <span className="text-xs text-charcoal-500 font-semibold uppercase tracking-wider block">Registered Accounts</span>
-          <div className="text-2xl sm:text-3xl font-extrabold text-forest-900">
+        <Card className="p-5 border-charcoal-200/80 dark:border-night-600 space-y-2 bg-white dark:bg-night-800">
+          <span className="text-xs text-charcoal-500 dark:text-charcoal-400 font-semibold uppercase tracking-wider block">Registered Accounts</span>
+          <div className="text-2xl sm:text-3xl font-extrabold text-forest-900 dark:text-gray-100">
             {usersList.length + 120}
           </div>
-          <span className="text-[11px] text-charcoal-500 font-medium">1 Gardener • 1 Superadmin</span>
+          <span className="text-[11px] text-charcoal-500 dark:text-charcoal-400 font-medium">1 Gardener • 1 Superadmin</span>
         </Card>
       </div>
 
       {/* ─── Navigation Tabs ─── */}
-      <div className="flex items-center gap-2 border-b border-charcoal-200 overflow-x-auto no-scrollbar">
+      <div className="flex items-center gap-2 border-b border-charcoal-200 dark:border-night-700 overflow-x-auto no-scrollbar">
         {[
           { id: 'overview', label: 'Platform Health & Trajectory' },
           { id: 'users', label: `User Accounts (${usersList.length})` },
@@ -122,10 +122,10 @@ export default function AdminDashboardPage() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`pb-3 px-3 text-xs sm:text-sm font-bold border-b-2 whitespace-nowrap transition-colors ${
+            className={`pb-3 px-3 text-xs sm:text-sm font-bold border-b-2 whitespace-nowrap transition-colors cursor-pointer ${
               activeTab === tab.id
-                ? 'border-forest text-forest'
-                : 'border-transparent text-charcoal-500 hover:text-charcoal-800'
+                ? 'border-forest text-forest dark:border-sage-400 dark:text-sage-300'
+                : 'border-transparent text-charcoal-500 dark:text-charcoal-400 hover:text-charcoal-800 dark:hover:text-gray-200'
             }`}
           >
             {tab.label}
@@ -138,10 +138,10 @@ export default function AdminDashboardPage() {
           ═══════════════════════════════════════════════ */}
       {activeTab === 'overview' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card className="p-6 space-y-4 border-charcoal-200/80">
-            <h3 className="text-base font-bold text-forest-900">Platform Revenue Trajectory (BDT)</h3>
-            <p className="text-xs text-charcoal-500">Aggregate commerce and service booking income</p>
-            <div className="h-44 flex items-end justify-between gap-3 pt-6 border-b border-charcoal-200 px-2">
+          <Card className="p-6 space-y-4 border-charcoal-200/80 dark:border-night-600 bg-white dark:bg-night-800">
+            <h3 className="text-base font-bold text-forest-900 dark:text-gray-100">Platform Revenue Trajectory (BDT)</h3>
+            <p className="text-xs text-charcoal-500 dark:text-charcoal-400">Aggregate commerce and service booking income</p>
+            <div className="h-44 flex items-end justify-between gap-3 pt-6 border-b border-charcoal-200 dark:border-night-700 px-2">
               {[
                 { month: 'Jul', gmv: 45000, height: '40%' },
                 { month: 'Aug', gmv: 68000, height: '55%' },
@@ -150,29 +150,29 @@ export default function AdminDashboardPage() {
                 { month: 'Nov', gmv: 142300, height: '100%' }
               ].map(m => (
                 <div key={m.month} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
-                  <span className="text-[10px] font-bold text-forest-800">৳{(m.gmv / 1000).toFixed(0)}k</span>
-                  <div style={{ height: m.height }} className="w-full max-w-[42px] bg-forest rounded-t-md shadow-sm" />
-                  <span className="text-xs font-semibold text-charcoal-600">{m.month}</span>
+                  <span className="text-[10px] font-bold text-forest-800 dark:text-sage-300">৳{(m.gmv / 1000).toFixed(0)}k</span>
+                  <div style={{ height: m.height }} className="w-full max-w-[42px] bg-forest dark:bg-forest-600 rounded-t-md shadow-sm" />
+                  <span className="text-xs font-semibold text-charcoal-600 dark:text-charcoal-400">{m.month}</span>
                 </div>
               ))}
             </div>
           </Card>
 
-          <Card className="p-6 space-y-4 border-charcoal-200/80">
-            <h3 className="text-base font-bold text-forest-900">Service Appointments Outcome Distribution</h3>
-            <p className="text-xs text-charcoal-500">Breakdown of total appointments scheduled</p>
+          <Card className="p-6 space-y-4 border-charcoal-200/80 dark:border-night-600 bg-white dark:bg-night-800">
+            <h3 className="text-base font-bold text-forest-900 dark:text-gray-100">Service Appointments Outcome Distribution</h3>
+            <p className="text-xs text-charcoal-500 dark:text-charcoal-400">Breakdown of total appointments scheduled</p>
             <div className="space-y-3 pt-3">
               {[
-                { label: 'Completed Appointments', count: 26, percent: 81, color: 'bg-emerald-600' },
-                { label: 'Accepted / Scheduled', count: 4, percent: 13, color: 'bg-forest-600' },
-                { label: 'Pending Gardener Response', count: 2, percent: 6, color: 'bg-amber-500' }
+                { label: 'Completed Appointments', count: 26, percent: 81, color: 'bg-emerald-600 dark:bg-emerald-500' },
+                { label: 'Accepted / Scheduled', count: 4, percent: 13, color: 'bg-forest-600 dark:bg-forest-500' },
+                { label: 'Pending Gardener Response', count: 2, percent: 6, color: 'bg-amber-500 dark:bg-amber-400' }
               ].map(item => (
                 <div key={item.label} className="space-y-1">
                   <div className="flex justify-between text-xs">
-                    <span className="font-medium text-charcoal-700">{item.label}</span>
-                    <strong className="text-forest-900">{item.count} ({item.percent}%)</strong>
+                    <span className="font-medium text-charcoal-700 dark:text-charcoal-300">{item.label}</span>
+                    <strong className="text-forest-900 dark:text-gray-100">{item.count} ({item.percent}%)</strong>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-offwhite border border-charcoal-100 overflow-hidden">
+                  <div className="w-full h-2 rounded-full bg-offwhite dark:bg-night-900 border border-charcoal-100 dark:border-night-700 overflow-hidden">
                     <div style={{ width: `${item.percent}%` }} className={`h-full ${item.color} rounded-full`} />
                   </div>
                 </div>
@@ -186,17 +186,17 @@ export default function AdminDashboardPage() {
           TAB 2: USER GOVERNANCE
           ═══════════════════════════════════════════════ */}
       {activeTab === 'users' && (
-        <Card className="p-6 space-y-4 border-charcoal-200/80 shadow-sm overflow-x-auto">
-          <div className="flex items-center justify-between border-b border-charcoal-100 pb-3">
+        <Card className="p-6 space-y-4 border-charcoal-200/80 dark:border-night-600 bg-white dark:bg-night-800 shadow-sm overflow-x-auto">
+          <div className="flex items-center justify-between border-b border-charcoal-100 dark:border-night-700 pb-3">
             <div>
-              <h3 className="text-base font-bold text-forest-900">User Account Governance</h3>
-              <p className="text-xs text-charcoal-500">Audit registered platform accounts, roles, and status controls</p>
+              <h3 className="text-base font-bold text-forest-900 dark:text-gray-100">User Account Governance</h3>
+              <p className="text-xs text-charcoal-500 dark:text-charcoal-400">Audit registered platform accounts, roles, and status controls</p>
             </div>
           </div>
 
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-charcoal-200 text-charcoal-400 uppercase tracking-wider text-[10px]">
+              <tr className="border-b border-charcoal-200 dark:border-night-700 text-charcoal-400 dark:text-charcoal-500 uppercase tracking-wider text-[10px]">
                 <th className="py-2.5">User Identity</th>
                 <th className="py-2.5">System Role</th>
                 <th className="py-2.5">Registration Date</th>
@@ -204,12 +204,12 @@ export default function AdminDashboardPage() {
                 <th className="py-2.5 text-right">Administrative Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-charcoal-100">
+            <tbody className="divide-y divide-charcoal-100 dark:divide-night-700">
               {usersList.map((user) => (
-                <tr key={user.id} className="hover:bg-offwhite/80">
+                <tr key={user.id} className="hover:bg-offwhite/80 dark:hover:bg-night-700/60 transition-colors">
                   <td className="py-3">
-                    <p className="font-bold text-forest-900">{user.name}</p>
-                    <p className="text-[11px] text-charcoal-400 font-mono">{user.email}</p>
+                    <p className="font-bold text-forest-900 dark:text-gray-100">{user.name}</p>
+                    <p className="text-[11px] text-charcoal-400 dark:text-charcoal-500 font-mono">{user.email}</p>
                   </td>
                   <td className="py-3">
                     <Badge
@@ -219,7 +219,7 @@ export default function AdminDashboardPage() {
                       {user.role.toUpperCase()}
                     </Badge>
                   </td>
-                  <td className="py-3 text-charcoal-600">{user.joined}</td>
+                  <td className="py-3 text-charcoal-600 dark:text-charcoal-300">{user.joined}</td>
                   <td className="py-3">
                     <Badge variant={user.status === 'active' ? 'success' : 'danger'} size="sm">
                       {user.status.toUpperCase()}
@@ -229,16 +229,16 @@ export default function AdminDashboardPage() {
                     {user.role !== 'admin' ? (
                       <button
                         onClick={() => toggleUserStatus(user.id)}
-                        className={`text-xs font-semibold px-2.5 py-1 rounded-lg border transition-colors ${
+                        className={`text-xs font-semibold px-2.5 py-1 rounded-lg border transition-colors cursor-pointer ${
                           user.status === 'active'
-                            ? 'text-rose-700 border-rose-200 hover:bg-rose-50'
-                            : 'text-emerald-700 border-emerald-200 hover:bg-emerald-50'
+                            ? 'text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800 hover:bg-rose-50 dark:hover:bg-rose-950/40'
+                            : 'text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800 hover:bg-emerald-50 dark:hover:bg-emerald-950/40'
                         }`}
                       >
                         {user.status === 'active' ? 'Suspend Access' : 'Activate User'}
                       </button>
                     ) : (
-                      <span className="text-[11px] text-charcoal-400 italic">Protected Root</span>
+                      <span className="text-[11px] text-charcoal-400 dark:text-charcoal-500 italic">Protected Root</span>
                     )}
                   </td>
                 </tr>
@@ -252,18 +252,18 @@ export default function AdminDashboardPage() {
           TAB 3: PAYMENT AUDIT LOGS
           ═══════════════════════════════════════════════ */}
       {activeTab === 'payments' && (
-        <Card className="p-6 space-y-4 border-charcoal-200/80 shadow-sm overflow-x-auto">
-          <div className="flex items-center justify-between border-b border-charcoal-100 pb-3">
+        <Card className="p-6 space-y-4 border-charcoal-200/80 dark:border-night-600 bg-white dark:bg-night-800 shadow-sm overflow-x-auto">
+          <div className="flex items-center justify-between border-b border-charcoal-100 dark:border-night-700 pb-3">
             <div>
-              <h3 className="text-base font-bold text-forest-900">Authoritative Payment Transaction Logs</h3>
-              <p className="text-xs text-charcoal-500">Instant Payment Notification (IPN) verification records</p>
+              <h3 className="text-base font-bold text-forest-900 dark:text-gray-100">Authoritative Payment Transaction Logs</h3>
+              <p className="text-xs text-charcoal-500 dark:text-charcoal-400">Instant Payment Notification (IPN) verification records</p>
             </div>
             <Badge variant="forest" size="sm">SSLCommerz Sandbox Verified</Badge>
           </div>
 
           <table className="w-full text-left text-xs font-mono">
             <thead>
-              <tr className="border-b border-charcoal-200 text-charcoal-400 uppercase tracking-wider text-[10px] font-sans">
+              <tr className="border-b border-charcoal-200 dark:border-night-700 text-charcoal-400 dark:text-charcoal-500 uppercase tracking-wider text-[10px] font-sans">
                 <th className="py-2.5">Transaction ID</th>
                 <th className="py-2.5">Customer Name</th>
                 <th className="py-2.5">Gateway & Channel</th>
@@ -272,19 +272,19 @@ export default function AdminDashboardPage() {
                 <th className="py-2.5 text-right font-sans">Timestamp</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-charcoal-100">
+            <tbody className="divide-y divide-charcoal-100 dark:divide-night-700">
               {paymentLogs.map((log) => (
-                <tr key={log.txnId} className="hover:bg-offwhite/80">
-                  <td className="py-3 font-bold text-forest-900">{log.txnId}</td>
-                  <td className="py-3 font-sans font-medium text-charcoal-800">{log.customer}</td>
-                  <td className="py-3 font-sans text-charcoal-600">{log.gateway}</td>
-                  <td className="py-3 font-sans font-bold text-forest-900">৳{log.amount.toLocaleString()}</td>
+                <tr key={log.txnId} className="hover:bg-offwhite/80 dark:hover:bg-night-700/60 transition-colors">
+                  <td className="py-3 font-bold text-forest-900 dark:text-sage-300">{log.txnId}</td>
+                  <td className="py-3 font-sans font-medium text-charcoal-800 dark:text-gray-200">{log.customer}</td>
+                  <td className="py-3 font-sans text-charcoal-600 dark:text-charcoal-400">{log.gateway}</td>
+                  <td className="py-3 font-sans font-bold text-forest-900 dark:text-sage-300">৳{log.amount.toLocaleString()}</td>
                   <td className="py-3 font-sans">
-                    <span className="inline-flex items-center gap-1 text-[11px] text-emerald-800 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                    <span className="inline-flex items-center gap-1 text-[11px] text-emerald-800 dark:text-emerald-300 font-bold bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800/60">
                       <Check className="w-3 h-3" /> {log.status}
                     </span>
                   </td>
-                  <td className="py-3 text-right text-charcoal-400">{log.date}</td>
+                  <td className="py-3 text-right text-charcoal-400 dark:text-charcoal-500">{log.date}</td>
                 </tr>
               ))}
             </tbody>
@@ -296,22 +296,22 @@ export default function AdminDashboardPage() {
           TAB 4: PLANT CATEGORIES MANAGEMENT
           ═══════════════════════════════════════════════ */}
       {activeTab === 'categories' && (
-        <Card className="p-6 space-y-4 border-charcoal-200/80 shadow-sm">
-          <div className="flex items-center justify-between border-b border-charcoal-100 pb-3">
+        <Card className="p-6 space-y-4 border-charcoal-200/80 dark:border-night-600 bg-white dark:bg-night-800 shadow-sm">
+          <div className="flex items-center justify-between border-b border-charcoal-100 dark:border-night-700 pb-3">
             <div>
-              <h3 className="text-base font-bold text-forest-900">Plant Categories & Taxonomy</h3>
-              <p className="text-xs text-charcoal-500">Manage plant groupings for e-commerce filtering</p>
+              <h3 className="text-base font-bold text-forest-900 dark:text-gray-100">Plant Categories & Taxonomy</h3>
+              <p className="text-xs text-charcoal-500 dark:text-charcoal-400">Manage plant groupings for e-commerce filtering</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {categoriesList.map(cat => (
-              <div key={cat.id} className="p-4 bg-offwhite rounded-xl border border-charcoal-200/80 space-y-2">
+              <div key={cat.id} className="p-4 bg-offwhite dark:bg-night-900 rounded-xl border border-charcoal-200/80 dark:border-night-700 space-y-2">
                 <div className="flex items-center justify-between">
-                  <h4 className="font-bold text-forest-900 text-sm">{cat.name}</h4>
+                  <h4 className="font-bold text-forest-900 dark:text-gray-100 text-sm">{cat.name}</h4>
                   <Badge variant="forest" size="sm">{cat.count} Items</Badge>
                 </div>
-                <p className="text-xs text-charcoal-600">{cat.desc}</p>
+                <p className="text-xs text-charcoal-600 dark:text-charcoal-400">{cat.desc}</p>
               </div>
             ))}
           </div>
@@ -323,27 +323,27 @@ export default function AdminDashboardPage() {
           ═══════════════════════════════════════════════ */}
       {activeTab === 'oversight' && (
         <div className="space-y-6">
-          <Card className="p-6 space-y-3 border-charcoal-200/80">
-            <h3 className="text-base font-bold text-forest-900">Platform Products Oversight ({products.length} Items)</h3>
-            <p className="text-xs text-charcoal-500">Read-only platform oversight of all inventory items managed by the Gardener</p>
+          <Card className="p-6 space-y-3 border-charcoal-200/80 dark:border-night-600 bg-white dark:bg-night-800">
+            <h3 className="text-base font-bold text-forest-900 dark:text-gray-100">Platform Products Oversight ({products.length} Items)</h3>
+            <p className="text-xs text-charcoal-500 dark:text-charcoal-400">Read-only platform oversight of all inventory items managed by the Gardener</p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs">
               {products.map(p => (
-                <div key={p._id} className="p-2.5 rounded-xl bg-offwhite border border-charcoal-100 space-y-1">
-                  <p className="font-bold text-forest-900 truncate">{p.name}</p>
-                  <p className="text-[11px] text-charcoal-500">৳{p.price.toLocaleString()} • Stock: {p.stockCount}</p>
+                <div key={p._id} className="p-2.5 rounded-xl bg-offwhite dark:bg-night-900 border border-charcoal-100 dark:border-night-700 space-y-1">
+                  <p className="font-bold text-forest-900 dark:text-gray-100 truncate">{p.name}</p>
+                  <p className="text-[11px] text-charcoal-500 dark:text-charcoal-400">৳{p.price.toLocaleString()} • Stock: {p.stockCount}</p>
                 </div>
               ))}
             </div>
           </Card>
 
-          <Card className="p-6 space-y-3 border-charcoal-200/80">
-            <h3 className="text-base font-bold text-forest-900">Gardening Service Packages ({services.length} Packages)</h3>
-            <p className="text-xs text-charcoal-500">Oversight of active horticulture packages</p>
+          <Card className="p-6 space-y-3 border-charcoal-200/80 dark:border-night-600 bg-white dark:bg-night-800">
+            <h3 className="text-base font-bold text-forest-900 dark:text-gray-100">Gardening Service Packages ({services.length} Packages)</h3>
+            <p className="text-xs text-charcoal-500 dark:text-charcoal-400">Oversight of active horticulture packages</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
               {services.map(s => (
-                <div key={s._id} className="p-3 rounded-xl bg-offwhite border border-charcoal-100 space-y-1">
-                  <p className="font-bold text-forest-900">{s.name}</p>
-                  <p className="text-[11px] text-forest-700 font-semibold">৳{s.price.toLocaleString()} • {s.duration}</p>
+                <div key={s._id} className="p-3 rounded-xl bg-offwhite dark:bg-night-900 border border-charcoal-100 dark:border-night-700 space-y-1">
+                  <p className="font-bold text-forest-900 dark:text-gray-100">{s.name}</p>
+                  <p className="text-[11px] text-forest-700 dark:text-sage-300 font-semibold">৳{s.price.toLocaleString()} • {s.duration}</p>
                 </div>
               ))}
             </div>

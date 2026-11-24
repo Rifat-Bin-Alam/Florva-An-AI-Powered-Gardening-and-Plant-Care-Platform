@@ -63,12 +63,12 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Badge variant="forest" size="lg" icon={Sprout}>About Florva</Badge>
 
-          <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-forest-900 leading-tight">
+          <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-forest-900 dark:text-gray-100 leading-tight">
             Cultivating Technology for{' '}
-            <span className="text-forest-700">Plant Lovers</span>
+            <span className="text-forest-700 dark:text-sage-400">Plant Lovers</span>
           </h1>
 
-          <p className="mt-4 text-base sm:text-lg text-charcoal-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-charcoal-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Florva is an AI-powered botanical e-commerce and gardening services platform,
             built as an academic practicum project at IUBAT. We bridge the gap between
             technology and nature by making plant care accessible, intelligent, and joyful.
@@ -82,13 +82,13 @@ export default function AboutPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Mission Card */}
-          <Card className="border-forest-200 bg-gradient-to-br from-forest-50/50 to-white">
+          <Card className="border-forest-200 dark:border-night-600 bg-gradient-to-br from-forest-50/50 to-white dark:from-night-800 dark:to-night-700">
             <div className="space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-forest-100 border border-forest-200 flex items-center justify-center text-forest-700">
+              <div className="w-12 h-12 rounded-xl bg-forest-100 dark:bg-forest-950/60 border border-forest-200 dark:border-forest-800/80 flex items-center justify-center text-forest-700 dark:text-forest-300">
                 <Target className="w-6 h-6" />
               </div>
-              <h2 className="text-2xl font-bold text-forest-900">Our Mission</h2>
-              <p className="text-sm text-charcoal-600 leading-relaxed">
+              <h2 className="text-2xl font-bold text-forest-900 dark:text-gray-100">Our Mission</h2>
+              <p className="text-sm text-charcoal-600 dark:text-gray-300 leading-relaxed">
                 To democratize expert plant care by combining curated botanical commerce with
                 on-demand horticulture services and AI-powered care guidance. We believe every
                 home deserves the calming presence of thriving green life — regardless of
@@ -96,8 +96,8 @@ export default function AboutPage() {
               </p>
               <ul className="space-y-2">
                 {['Make plant care accessible to beginners', 'Connect customers with verified gardeners', 'Leverage AI for personalized care advice'].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-xs text-charcoal-700">
-                    <CheckCircle2 className="w-4 h-4 text-forest-600 flex-shrink-0" />
+                  <li key={item} className="flex items-center gap-2 text-xs text-charcoal-700 dark:text-gray-300">
+                    <CheckCircle2 className="w-4 h-4 text-forest-600 dark:text-forest-400 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -106,21 +106,21 @@ export default function AboutPage() {
           </Card>
 
           {/* Vision Card */}
-          <Card className="border-sage-200 bg-gradient-to-br from-sage-50/50 to-white">
+          <Card className="border-sage-200 dark:border-night-600 bg-gradient-to-br from-sage-50/50 to-white dark:from-night-800 dark:to-night-700">
             <div className="space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-sage-100 border border-sage-200 flex items-center justify-center text-sage-700">
+              <div className="w-12 h-12 rounded-xl bg-sage-100 dark:bg-night-900 border border-sage-200 dark:border-night-600 flex items-center justify-center text-sage-700 dark:text-sage-400">
                 <Eye className="w-6 h-6" />
               </div>
-              <h2 className="text-2xl font-bold text-forest-900">Our Vision</h2>
-              <p className="text-sm text-charcoal-600 leading-relaxed">
+              <h2 className="text-2xl font-bold text-forest-900 dark:text-gray-100">Our Vision</h2>
+              <p className="text-sm text-charcoal-600 dark:text-gray-300 leading-relaxed">
                 To become Bangladesh's most trusted digital platform for botanical living —
                 where technology nurtures nature, every plant has a care companion, and
                 professional horticulture services are just a tap away.
               </p>
               <ul className="space-y-2">
                 {['Bangladesh\'s leading botanical platform', 'AI-driven preventive plant care', 'Sustainable urban gardening ecosystem'].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-xs text-charcoal-700">
-                    <CheckCircle2 className="w-4 h-4 text-sage-600 flex-shrink-0" />
+                  <li key={item} className="flex items-center gap-2 text-xs text-charcoal-700 dark:text-gray-300">
+                    <CheckCircle2 className="w-4 h-4 text-sage-600 dark:text-sage-400 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -133,11 +133,11 @@ export default function AboutPage() {
       {/* ═══════════════════════════════════════════════
           SECTION 3: Core Values Grid
           ═══════════════════════════════════════════════ */}
-      <section className="bg-sage-50/50 py-16 sm:py-20">
+      <section className="bg-sage-50/50 dark:bg-night-950/60 py-16 sm:py-20 border-y border-sage-100/60 dark:border-night-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-12">
             <Badge variant="default" size="md">What We Stand For</Badge>
-            <h2 className="text-3xl font-bold text-forest-900 tracking-tight">
+            <h2 className="text-3xl font-bold text-forest-900 dark:text-gray-100 tracking-tight">
               Core Platform Values
             </h2>
           </div>
@@ -148,11 +148,11 @@ export default function AboutPage() {
               return (
                 <Card key={value.title} hoverable padding="p-6" className="text-center">
                   <div className="space-y-4">
-                    <div className="w-14 h-14 rounded-2xl bg-forest-50 border border-forest-100 flex items-center justify-center text-forest-700 mx-auto">
+                    <div className="w-14 h-14 rounded-2xl bg-forest-50 dark:bg-night-900 border border-forest-100 dark:border-night-600 flex items-center justify-center text-forest-700 dark:text-forest-400 mx-auto">
                       <Icon className="w-7 h-7" />
                     </div>
-                    <h3 className="text-base font-bold text-forest-900">{value.title}</h3>
-                    <p className="text-xs text-charcoal-600 leading-relaxed">{value.description}</p>
+                    <h3 className="text-base font-bold text-forest-900 dark:text-gray-100">{value.title}</h3>
+                    <p className="text-xs text-charcoal-600 dark:text-gray-400 leading-relaxed">{value.description}</p>
                   </div>
                 </Card>
               );
@@ -167,20 +167,20 @@ export default function AboutPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
           {/* Developer Profile Card */}
-          <Card className="lg:col-span-2 text-center border-forest-200">
+          <Card className="lg:col-span-2 text-center border-forest-200 dark:border-night-600">
             <div className="space-y-5">
               {/* Avatar Circle with Initials */}
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-forest to-forest-800 border-4 border-sage-200 flex items-center justify-center text-white text-2xl font-bold mx-auto shadow-botanical-lg">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-forest to-forest-800 border-4 border-sage-200 dark:border-forest-700 flex items-center justify-center text-white text-2xl font-bold mx-auto shadow-botanical-lg">
                 RBA
               </div>
               <div>
-                <h3 className="text-xl font-bold text-forest-900">Rifat Bin Alam</h3>
-                <p className="text-sm text-charcoal-500">Full-Stack Developer</p>
+                <h3 className="text-xl font-bold text-forest-900 dark:text-gray-100">Rifat Bin Alam</h3>
+                <p className="text-sm text-charcoal-500 dark:text-gray-400">Full-Stack Developer</p>
               </div>
               <Badge variant="forest" size="md" icon={GraduationCap}>
                 IUBAT Practicum Project
               </Badge>
-              <p className="text-xs text-charcoal-600 leading-relaxed">
+              <p className="text-xs text-charcoal-600 dark:text-gray-300 leading-relaxed">
                 Florva is developed as a university practicum project at IUBAT,
                 demonstrating full-stack MERN capabilities with modern UI/UX design,
                 role-based access control, and AI integration.
@@ -189,19 +189,19 @@ export default function AboutPage() {
           </Card>
 
           {/* Technical Architecture Summary */}
-          <Card className="lg:col-span-3 border-charcoal-200">
+          <Card className="lg:col-span-3 border-charcoal-200 dark:border-night-600">
             <div className="space-y-5">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-charcoal-100 flex items-center justify-center text-charcoal-700">
+                <div className="w-10 h-10 rounded-lg bg-charcoal-100 dark:bg-night-900 flex items-center justify-center text-charcoal-700 dark:text-gray-300">
                   <Code2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-forest-900">Technical Architecture</h3>
-                  <p className="text-xs text-charcoal-500">MERN Stack + AI Integration</p>
+                  <h3 className="text-lg font-bold text-forest-900 dark:text-gray-100">Technical Architecture</h3>
+                  <p className="text-xs text-charcoal-500 dark:text-gray-400">MERN Stack + AI Integration</p>
                 </div>
               </div>
 
-              <p className="text-xs text-charcoal-600 leading-relaxed">
+              <p className="text-xs text-charcoal-600 dark:text-gray-300 leading-relaxed">
                 Built on the MERN stack (MongoDB, Express, React, Node.js) with a clean
                 separation between client SPA and RESTful API server. The platform employs
                 JWT authentication, role-based route guards, and server-side validation
@@ -213,12 +213,12 @@ export default function AboutPage() {
                 {techStack.map((tech) => (
                   <div
                     key={tech.name}
-                    className="flex items-center gap-2 p-2 rounded-lg bg-offwhite border border-charcoal-100 text-xs"
+                    className="flex items-center gap-2 p-2 rounded-lg bg-offwhite dark:bg-night-900 border border-charcoal-100 dark:border-night-700 text-xs"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-forest flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-forest dark:bg-forest-400 flex-shrink-0" />
                     <div className="min-w-0">
-                      <span className="font-semibold text-charcoal-800 block truncate">{tech.name}</span>
-                      <span className="text-charcoal-500 text-[10px] block truncate">{tech.role}</span>
+                      <span className="font-semibold text-charcoal-800 dark:text-gray-200 block truncate">{tech.name}</span>
+                      <span className="text-charcoal-500 dark:text-gray-400 text-[10px] block truncate">{tech.role}</span>
                     </div>
                   </div>
                 ))}
@@ -232,12 +232,12 @@ export default function AboutPage() {
           SECTION 5: CTA Banner
           ═══════════════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <Card className="bg-forest-900 border-forest-800 text-center p-8 sm:p-12 text-white">
+        <Card className="bg-forest-900 border-forest-800 dark:bg-night-800 dark:border-night-600 text-center p-8 sm:p-12 text-white">
           <div className="max-w-2xl mx-auto space-y-5">
             <h2 className="text-2xl sm:text-3xl font-bold">
               Explore What Florva Has to Offer
             </h2>
-            <p className="text-sm text-sage-200 leading-relaxed">
+            <p className="text-sm text-sage-200 dark:text-gray-300 leading-relaxed">
               Browse our plant collection, discover professional gardening services,
               or create an account to start your botanical journey.
             </p>
@@ -248,7 +248,7 @@ export default function AboutPage() {
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button variant="outline" size="lg" icon={ArrowRight} className="border-sage-400 text-sage-200 hover:bg-forest-800 hover:text-white">
+                <Button variant="outline" size="lg" icon={ArrowRight} className="border-sage-400 text-sage-200 dark:text-sage-300 hover:bg-forest-800 dark:hover:bg-night-700 hover:text-white">
                   Contact Us
                 </Button>
               </Link>

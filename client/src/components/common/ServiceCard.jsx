@@ -13,9 +13,9 @@ export default function ServiceCard({ service, compact = false }) {
   const { _id, name, slug, category, price, duration, description, includes = [], image, rating } = service;
 
   return (
-    <Card hoverable padding="p-0" className="overflow-hidden flex flex-col h-full bg-white border border-charcoal-100 rounded-xl">
+    <Card hoverable padding="p-0" className="overflow-hidden flex flex-col h-full bg-white dark:bg-night-800 border border-charcoal-100/90 dark:border-night-600 rounded-xl">
       {/* Service Image */}
-      <Link to={`/services/${slug}`} className="block relative overflow-hidden bg-offwhite">
+      <Link to={`/services/${slug}`} className="block relative overflow-hidden bg-offwhite dark:bg-night-900">
         <div className={compact ? 'h-36' : 'h-44 sm:h-48'}>
           <img
             src={image}
@@ -33,8 +33,8 @@ export default function ServiceCard({ service, compact = false }) {
 
           {/* Duration Badge */}
           <div className="absolute top-2.5 right-2.5">
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-white/95 text-charcoal-700 shadow-sm border border-charcoal-100">
-              <Clock className="w-3 h-3 text-forest" />
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-white/95 dark:bg-night-800/95 text-charcoal-700 dark:text-gray-200 shadow-sm border border-charcoal-100 dark:border-night-600">
+              <Clock className="w-3 h-3 text-forest dark:text-sage-400" />
               {duration}
             </span>
           </div>
@@ -45,19 +45,19 @@ export default function ServiceCard({ service, compact = false }) {
       <div className="flex flex-col flex-grow p-4">
         {/* Title and Rating */}
         <div className="flex items-start justify-between gap-2 mb-1.5">
-          <Link to={`/services/${slug}`} className="hover:text-forest transition-colors">
-            <h3 className="text-base font-bold text-forest-900 leading-snug">{name}</h3>
+          <Link to={`/services/${slug}`} className="hover:text-forest dark:hover:text-sage-300 transition-colors">
+            <h3 className="text-base font-bold text-forest-900 dark:text-gray-100 leading-snug">{name}</h3>
           </Link>
           {rating && (
             <div className="flex items-center gap-0.5 flex-shrink-0">
               <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-              <span className="text-xs font-semibold text-charcoal-700">{rating}</span>
+              <span className="text-xs font-semibold text-charcoal-700 dark:text-charcoal-300">{rating}</span>
             </div>
           )}
         </div>
 
         {/* Description */}
-        <p className={`text-xs text-charcoal-600 leading-relaxed mb-3 ${compact ? 'line-clamp-2' : 'line-clamp-3'}`}>
+        <p className={`text-xs text-charcoal-600 dark:text-charcoal-400 leading-relaxed mb-3 ${compact ? 'line-clamp-2' : 'line-clamp-3'}`}>
           {description}
         </p>
 
@@ -65,13 +65,13 @@ export default function ServiceCard({ service, compact = false }) {
         {!compact && includes.length > 0 && (
           <ul className="space-y-1.5 mb-4">
             {includes.slice(0, 3).map((item) => (
-              <li key={item} className="flex items-center gap-1.5 text-[11px] text-charcoal-600">
-                <Check className="w-3.5 h-3.5 text-forest-600 flex-shrink-0" />
+              <li key={item} className="flex items-center gap-1.5 text-[11px] text-charcoal-600 dark:text-charcoal-300">
+                <Check className="w-3.5 h-3.5 text-forest-600 dark:text-sage-400 flex-shrink-0" />
                 <span>{item}</span>
               </li>
             ))}
             {includes.length > 3 && (
-              <li className="text-[11px] text-forest-600 font-medium pl-5">
+              <li className="text-[11px] text-forest-600 dark:text-sage-400 font-medium pl-5">
                 +{includes.length - 3} more included
               </li>
             )}
@@ -79,10 +79,10 @@ export default function ServiceCard({ service, compact = false }) {
         )}
 
         {/* Price and Action */}
-        <div className="mt-auto pt-3 flex items-center justify-between gap-2 border-t border-charcoal-100">
+        <div className="mt-auto pt-3 flex items-center justify-between gap-2 border-t border-charcoal-100 dark:border-night-700">
           <div>
-            <span className="text-[11px] text-charcoal-400 block -mb-0.5">Service fee</span>
-            <p className="text-lg font-bold text-forest-800">৳{price.toLocaleString()}</p>
+            <span className="text-[11px] text-charcoal-400 dark:text-charcoal-500 block -mb-0.5">Service fee</span>
+            <p className="text-lg font-bold text-forest-800 dark:text-sage-300">৳{price.toLocaleString()}</p>
           </div>
           <Link to={`/services/${slug}`}>
             <Button variant="outline" size="sm" icon={ArrowRight} className="text-[11px]">

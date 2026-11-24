@@ -45,20 +45,20 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-[75vh] flex items-center justify-center px-4 py-12">
-      <Card className="max-w-md w-full p-6 sm:p-8 space-y-6 border-charcoal-200/80 shadow-botanical-lg">
+      <Card className="max-w-md w-full p-6 sm:p-8 space-y-6 border-charcoal-200/80 dark:border-night-600 shadow-botanical-lg bg-white dark:bg-night-800 transition-colors">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-xl bg-forest flex items-center justify-center text-white mx-auto shadow-sm">
+          <div className="w-12 h-12 rounded-xl bg-forest dark:bg-forest-700 flex items-center justify-center text-white mx-auto shadow-sm">
             <Sprout className="w-6 h-6 text-sage" />
           </div>
-          <h1 className="text-2xl font-bold text-forest-900">Create Florva Account</h1>
-          <p className="text-xs text-charcoal-500">Join our urban botanical gardening community</p>
+          <h1 className="text-2xl font-bold text-forest-900 dark:text-gray-100">Create Florva Account</h1>
+          <p className="text-xs text-charcoal-500 dark:text-charcoal-400">Join our urban botanical gardening community</p>
         </div>
 
         {/* Error Alert */}
         {errorMessage && (
-          <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-2.5 text-xs text-rose-800">
-            <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+          <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-800/60 flex items-start gap-2.5 text-xs text-rose-800 dark:text-rose-200">
+            <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
             <p className="font-semibold">{errorMessage}</p>
           </div>
         )}
@@ -125,9 +125,9 @@ export default function RegisterPage() {
         </form>
 
         {/* Footer Link */}
-        <div className="text-center pt-2 text-xs text-charcoal-600 border-t border-charcoal-100">
+        <div className="text-center pt-2 text-xs text-charcoal-600 dark:text-charcoal-400 border-t border-charcoal-100 dark:border-night-700">
           <span>Already have an account? </span>
-          <Link to="/login" className="font-bold text-forest hover:underline">
+          <Link to="/login" className="font-bold text-forest dark:text-sage-300 hover:underline">
             Sign In
           </Link>
         </div>

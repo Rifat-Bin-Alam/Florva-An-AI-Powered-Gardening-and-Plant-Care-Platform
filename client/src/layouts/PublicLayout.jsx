@@ -12,7 +12,7 @@ import DevInspectorBadge from '../dev/DevInspectorBadge';
  */
 export default function PublicLayout() {
   return (
-    <div className="flex flex-col min-h-screen bg-offwhite text-charcoal">
+    <div className="flex flex-col min-h-screen bg-offwhite dark:bg-night-900 text-charcoal dark:text-gray-100 transition-colors duration-200">
       {/* Top Sticky Navigation */}
       <Navbar />
 

@@ -27,9 +27,9 @@ export default function ProductCard({ product, compact = false, className = '' }
     : null;
 
   return (
-    <Card hoverable padding="p-0" className={clsx('overflow-hidden flex flex-col h-full bg-white border border-charcoal-100 rounded-xl', className)}>
+    <Card hoverable padding="p-0" className={clsx('overflow-hidden flex flex-col h-full bg-white dark:bg-night-800 border border-charcoal-100/90 dark:border-night-600 rounded-xl', className)}>
       {/* Product Image Container */}
-      <Link to={`/shop/${slug}`} className="block relative overflow-hidden bg-offwhite">
+      <Link to={`/shop/${slug}`} className="block relative overflow-hidden bg-offwhite dark:bg-night-900">
         <div className={clsx('w-full overflow-hidden', compact ? 'h-40' : 'h-52 sm:h-56')}>
           <img
             src={image}
@@ -47,7 +47,7 @@ export default function ProductCard({ product, compact = false, className = '' }
             </span>
           )}
           {!inStock && (
-            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-charcoal-700 text-white shadow-sm">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-charcoal-700 dark:bg-night-700 text-white shadow-sm border border-charcoal-600 dark:border-night-500">
               Out of Stock
             </span>
           )}
@@ -63,26 +63,26 @@ export default function ProductCard({ product, compact = false, className = '' }
       <div className={clsx('flex flex-col flex-grow', compact ? 'p-3' : 'p-4')}>
         {/* Name and Rating Row */}
         <div className="flex items-start justify-between gap-2 mb-1.5">
-          <Link to={`/shop/${slug}`} className="hover:text-forest transition-colors">
-            <h3 className={clsx('font-bold text-forest-900 leading-snug', compact ? 'text-sm' : 'text-base')}>
+          <Link to={`/shop/${slug}`} className="hover:text-forest dark:hover:text-sage-300 transition-colors">
+            <h3 className={clsx('font-bold text-forest-900 dark:text-gray-100 leading-snug', compact ? 'text-sm' : 'text-base')}>
               {name}
             </h3>
           </Link>
           {rating && (
             <div className="flex items-center gap-0.5 flex-shrink-0">
               <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-              <span className="text-xs font-semibold text-charcoal-700">{rating}</span>
+              <span className="text-xs font-semibold text-charcoal-700 dark:text-charcoal-300">{rating}</span>
             </div>
           )}
         </div>
 
         {/* Price Line */}
         <div className="flex items-baseline gap-2 mb-3">
-          <span className={clsx('font-bold text-forest-800', compact ? 'text-base' : 'text-lg')}>
+          <span className={clsx('font-bold text-forest-800 dark:text-sage-300', compact ? 'text-base' : 'text-lg')}>
             ৳{price.toLocaleString()}
           </span>
           {originalPrice && (
-            <span className="text-xs text-charcoal-400 line-through">
+            <span className="text-xs text-charcoal-400 dark:text-charcoal-500 line-through">
               ৳{originalPrice.toLocaleString()}
             </span>
           )}
@@ -90,20 +90,20 @@ export default function ProductCard({ product, compact = false, className = '' }
 
         {/* Quick Care Stats */}
         {!compact && (
-          <div className="flex items-center gap-3 text-[11px] text-charcoal-500 mb-3">
+          <div className="flex items-center gap-3 text-[11px] text-charcoal-500 dark:text-charcoal-400 mb-3">
             <span className="flex items-center gap-1">
-              <Sun className="w-3 h-3 text-amber-600" />
+              <Sun className="w-3 h-3 text-amber-600 dark:text-amber-400" />
               {sunlight}
             </span>
             <span className="flex items-center gap-1">
-              <Droplets className="w-3 h-3 text-sky-600" />
+              <Droplets className="w-3 h-3 text-sky-600 dark:text-sky-400" />
               {waterFrequency}
             </span>
           </div>
         )}
 
         {/* Care Level Tag and Add to Cart Action */}
-        <div className="mt-auto pt-2 border-t border-charcoal-50">
+        <div className="mt-auto pt-2 border-t border-charcoal-100 dark:border-night-700">
           <div className="flex items-center justify-between gap-2 pt-2">
             <Badge
               variant={careLevel === 'Beginner' ? 'success' : careLevel === 'Intermediate' ? 'warning' : 'danger'}

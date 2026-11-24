@@ -117,18 +117,18 @@ export default function PlantChatbot() {
 
       {/* ─── Slide-Out Botanical Chat Drawer ─── */}
       {isOpen && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[420px] max-h-[600px] h-[85vh] bg-white rounded-2xl shadow-2xl border border-charcoal-200 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[420px] max-h-[600px] h-[85vh] bg-white dark:bg-night-800 rounded-2xl shadow-2xl border border-charcoal-200 dark:border-night-600 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
           
           {/* Drawer Header */}
-          <div className="bg-forest text-white p-4 flex items-center justify-between border-b border-forest-800">
+          <div className="bg-forest dark:bg-forest-950 text-white p-4 flex items-center justify-between border-b border-forest-800 dark:border-forest-900">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-forest-800 border border-sage-400/40 flex items-center justify-center text-sage">
+              <div className="w-9 h-9 rounded-xl bg-forest-800 dark:bg-forest-900 border border-sage-400/40 flex items-center justify-center text-sage">
                 <Sprout className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="font-bold text-sm tracking-tight text-white flex items-center gap-1.5">
                   Florva AI Plant Doctor
-                  <span className="text-[10px] font-medium bg-forest-800 text-sage-300 px-1.5 py-0.5 rounded border border-sage-400/30">
+                  <span className="text-[10px] font-medium bg-forest-800 dark:bg-forest-900 text-sage-300 px-1.5 py-0.5 rounded border border-sage-400/30">
                     Gemini AI
                   </span>
                 </h3>
@@ -140,14 +140,14 @@ export default function PlantChatbot() {
               <button
                 onClick={resetChat}
                 title="Restart Conversation"
-                className="p-1.5 hover:text-white hover:bg-forest-800 rounded-lg transition-colors"
+                className="p-1.5 hover:text-white hover:bg-forest-800 dark:hover:bg-forest-900 rounded-lg transition-colors cursor-pointer"
               >
                 <RefreshCw className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setIsOpen(false)}
                 title="Close Assistant"
-                className="p-1.5 hover:text-white hover:bg-forest-800 rounded-lg transition-colors"
+                className="p-1.5 hover:text-white hover:bg-forest-800 dark:hover:bg-forest-900 rounded-lg transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -155,12 +155,12 @@ export default function PlantChatbot() {
           </div>
 
           {/* Quick Prompts Bar */}
-          <div className="bg-offwhite px-3 py-2 border-b border-charcoal-100 overflow-x-auto flex gap-1.5 no-scrollbar">
+          <div className="bg-offwhite dark:bg-night-900 px-3 py-2 border-b border-charcoal-100 dark:border-night-700 overflow-x-auto flex gap-1.5 no-scrollbar">
             {quickPrompts.map((prompt, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSend(prompt)}
-                className="text-[11px] whitespace-nowrap bg-white text-forest-800 border border-charcoal-200 rounded-full px-2.5 py-1 hover:bg-sage-50 hover:border-sage-300 transition-colors flex-shrink-0"
+                className="text-[11px] whitespace-nowrap bg-white dark:bg-night-800 text-forest-800 dark:text-sage-300 border border-charcoal-200 dark:border-night-600 rounded-full px-2.5 py-1 hover:bg-sage-50 dark:hover:bg-night-700 hover:border-sage-300 dark:hover:border-sage-500 transition-colors flex-shrink-0 cursor-pointer"
               >
                 {prompt}
               </button>
@@ -168,14 +168,14 @@ export default function PlantChatbot() {
           </div>
 
           {/* Messages Scroll Area */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-offwhite/50 text-xs">
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-offwhite/50 dark:bg-night-900/60 text-xs">
             {messages.map((msg) => (
               <div
                 key={msg.id}
                 className={`flex gap-2.5 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {msg.sender === 'bot' && (
-                  <div className="w-7 h-7 rounded-lg bg-forest text-sage flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
+                  <div className="w-7 h-7 rounded-lg bg-forest dark:bg-forest-900 text-sage flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
                     <Bot className="w-4 h-4" />
                   </div>
                 )}
@@ -184,7 +184,7 @@ export default function PlantChatbot() {
                   className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 shadow-sm leading-relaxed ${
                     msg.sender === 'user'
                       ? 'bg-forest text-white rounded-br-none'
-                      : 'bg-white text-charcoal-800 border border-charcoal-100 rounded-bl-none'
+                      : 'bg-white dark:bg-night-800 text-charcoal-800 dark:text-gray-100 border border-charcoal-100 dark:border-night-600 rounded-bl-none'
                   }`}
                 >
                   <div className="whitespace-pre-line">
@@ -193,7 +193,7 @@ export default function PlantChatbot() {
                 </div>
 
                 {msg.sender === 'user' && (
-                  <div className="w-7 h-7 rounded-lg bg-sage-200 text-forest-900 flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm font-bold text-xs">
+                  <div className="w-7 h-7 rounded-lg bg-sage-200 dark:bg-sage-800 text-forest-900 dark:text-sage-100 flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm font-bold text-xs">
                     <User className="w-4 h-4" />
                   </div>
                 )}
@@ -202,12 +202,12 @@ export default function PlantChatbot() {
 
             {isTyping && (
               <div className="flex gap-2.5 items-center text-charcoal-400 pl-9">
-                <div className="flex gap-1 bg-white border border-charcoal-100 px-3 py-2 rounded-xl shadow-sm">
+                <div className="flex gap-1 bg-white dark:bg-night-800 border border-charcoal-100 dark:border-night-600 px-3 py-2 rounded-xl shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-forest animate-bounce" style={{ animationDelay: '0ms' }} />
                   <span className="w-1.5 h-1.5 rounded-full bg-forest animate-bounce" style={{ animationDelay: '150ms' }} />
                   <span className="w-1.5 h-1.5 rounded-full bg-forest animate-bounce" style={{ animationDelay: '300ms' }} />
                 </div>
-                <span className="text-[10px] text-charcoal-500">Florva AI is analyzing...</span>
+                <span className="text-[10px] text-charcoal-500 dark:text-charcoal-400">Florva AI is analyzing...</span>
               </div>
             )}
             <div ref={messagesEndRef} />
@@ -219,19 +219,19 @@ export default function PlantChatbot() {
               e.preventDefault();
               handleSend();
             }}
-            className="p-3 bg-white border-t border-charcoal-200 flex items-center gap-2"
+            className="p-3 bg-white dark:bg-night-800 border-t border-charcoal-200 dark:border-night-600 flex items-center gap-2"
           >
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about watering, sunlight, diagnosis..."
-              className="flex-1 bg-offwhite border border-charcoal-200 rounded-xl px-3.5 py-2 text-xs text-charcoal placeholder-charcoal-400 focus:outline-none focus:ring-2 focus:ring-forest focus:border-forest"
+              className="flex-1 bg-offwhite dark:bg-night-900 border border-charcoal-200 dark:border-night-600 rounded-xl px-3.5 py-2 text-xs text-charcoal dark:text-gray-100 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:ring-2 focus:ring-forest dark:focus:ring-sage-400 focus:border-forest"
             />
             <button
               type="submit"
               disabled={!input.trim()}
-              className="p-2 rounded-xl bg-forest text-white hover:bg-forest-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="p-2 rounded-xl bg-forest text-white hover:bg-forest-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
               title="Send Question"
             >
               <Send className="w-4 h-4" />

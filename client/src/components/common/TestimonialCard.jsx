@@ -17,9 +17,9 @@ export default function TestimonialCard({ testimonial }) {
     .toUpperCase();
 
   return (
-    <Card className="flex flex-col justify-between h-full relative">
+    <Card className="flex flex-col justify-between h-full relative bg-white dark:bg-night-800 border border-charcoal-100/90 dark:border-night-600">
       {/* Decorative Quote Icon */}
-      <Quote className="absolute top-4 right-4 w-8 h-8 text-sage-200 opacity-60" />
+      <Quote className="absolute top-4 right-4 w-8 h-8 text-sage-200 dark:text-night-600 opacity-60" />
 
       <div className="space-y-4">
         {/* Star Rating */}
@@ -30,31 +30,31 @@ export default function TestimonialCard({ testimonial }) {
               className={`w-4 h-4 ${
                 i < rating
                   ? 'text-amber-400 fill-amber-400'
-                  : 'text-charcoal-200'
+                  : 'text-charcoal-200 dark:text-night-600'
               }`}
             />
           ))}
         </div>
 
         {/* Review Text */}
-        <p className="text-sm text-charcoal-700 leading-relaxed italic">
+        <p className="text-sm text-charcoal-700 dark:text-gray-200 leading-relaxed italic">
           "{text}"
         </p>
       </div>
 
       {/* Reviewer Identity */}
-      <div className="flex items-center gap-3 mt-5 pt-4 border-t border-charcoal-100">
+      <div className="flex items-center gap-3 mt-5 pt-4 border-t border-charcoal-100 dark:border-night-700">
         {/* Initials Avatar */}
-        <div className="w-10 h-10 rounded-full bg-forest-50 border border-forest-200 flex items-center justify-center text-forest-700 font-bold text-sm flex-shrink-0">
+        <div className="w-10 h-10 rounded-full bg-forest-50 dark:bg-forest-950/70 border border-forest-200 dark:border-forest-800 flex items-center justify-center text-forest-700 dark:text-sage-300 font-bold text-sm flex-shrink-0">
           {initials}
         </div>
         <div className="flex-grow min-w-0">
-          <p className="text-sm font-semibold text-forest-900 truncate">{name}</p>
-          <p className="text-xs text-charcoal-500">{role}</p>
+          <p className="text-sm font-semibold text-forest-900 dark:text-gray-100 truncate">{name}</p>
+          <p className="text-xs text-charcoal-500 dark:text-charcoal-400">{role}</p>
         </div>
         {/* Plant Count Badge */}
         {plantCount && (
-          <div className="flex items-center gap-1 text-xs text-sage-600 bg-sage-50 px-2 py-1 rounded-full border border-sage-200 flex-shrink-0">
+          <div className="flex items-center gap-1 text-xs text-sage-600 dark:text-sage-300 bg-sage-50 dark:bg-night-700 px-2 py-1 rounded-full border border-sage-200 dark:border-night-600 flex-shrink-0">
             <Sprout className="w-3 h-3" />
             <span className="font-medium">{plantCount}</span>
           </div>

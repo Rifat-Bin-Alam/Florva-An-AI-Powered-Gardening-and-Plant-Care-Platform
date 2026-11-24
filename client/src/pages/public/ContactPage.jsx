@@ -120,12 +120,12 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Badge variant="forest" size="lg" icon={MessageCircle}>Get in Touch</Badge>
 
-          <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-forest-900 leading-tight">
+          <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-forest-900 dark:text-gray-100 leading-tight">
             We'd Love to Hear{' '}
-            <span className="text-forest-700">From You</span>
+            <span className="text-forest-700 dark:text-sage-400">From You</span>
           </h1>
 
-          <p className="mt-4 text-base sm:text-lg text-charcoal-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-charcoal-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Have a question about plants, services, or the platform? Drop us a message
             and our team will get back to you promptly.
           </p>
@@ -140,14 +140,14 @@ export default function ContactPage() {
           {contactInfo.map((info) => {
             const Icon = info.icon;
             return (
-              <Card key={info.title} padding="p-5" className="text-center">
+              <Card key={info.title} padding="p-5" className="text-center dark:border-night-600">
                 <div className="space-y-3">
-                  <div className="w-11 h-11 rounded-xl bg-forest-50 border border-forest-100 flex items-center justify-center text-forest-700 mx-auto">
+                  <div className="w-11 h-11 rounded-xl bg-forest-50 dark:bg-night-900 border border-forest-100 dark:border-night-600 flex items-center justify-center text-forest-700 dark:text-forest-400 mx-auto">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-sm font-bold text-forest-900">{info.title}</h3>
-                  <p className="text-sm font-semibold text-charcoal-800">{info.primary}</p>
-                  <p className="text-xs text-charcoal-500">{info.secondary}</p>
+                  <h3 className="text-sm font-bold text-forest-900 dark:text-gray-100">{info.title}</h3>
+                  <p className="text-sm font-semibold text-charcoal-800 dark:text-gray-200">{info.primary}</p>
+                  <p className="text-xs text-charcoal-500 dark:text-gray-400">{info.secondary}</p>
                 </div>
               </Card>
             );
@@ -162,22 +162,22 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
           {/* Contact Form */}
-          <Card className="border-forest-200">
+          <Card className="border-forest-200 dark:border-night-600">
             <div className="space-y-6">
               <div>
-                <h2 className="text-xl font-bold text-forest-900">Send a Message</h2>
-                <p className="text-xs text-charcoal-500 mt-1">
+                <h2 className="text-xl font-bold text-forest-900 dark:text-gray-100">Send a Message</h2>
+                <p className="text-xs text-charcoal-500 dark:text-gray-400 mt-1">
                   Fill out the form below and we'll respond as soon as possible.
                 </p>
               </div>
 
               {/* Success Feedback */}
               {formSubmitted && (
-                <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-center gap-3">
+                <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300 text-sm flex items-center gap-3">
                   <Sprout className="w-5 h-5 flex-shrink-0" />
                   <div>
                     <p className="font-semibold">Message sent successfully!</p>
-                    <p className="text-xs text-emerald-600 mt-0.5">
+                    <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-0.5">
                       This is a demo — in production, this would send a real email.
                     </p>
                   </div>
@@ -215,7 +215,7 @@ export default function ContactPage() {
                 />
 
                 <div className="w-full">
-                  <label htmlFor="message" className="block text-xs font-semibold text-charcoal-700 uppercase tracking-wider mb-1.5">
+                  <label htmlFor="message" className="block text-xs font-semibold text-charcoal-700 dark:text-gray-300 uppercase tracking-wider mb-1.5">
                     Message <span className="text-red-500">*</span>
                   </label>
                   <textarea
@@ -226,7 +226,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     placeholder="Tell us about your query, plant care concerns, or feedback..."
-                    className="block w-full rounded-lg border border-charcoal-200 bg-white px-3.5 py-2.5 text-sm text-charcoal placeholder-charcoal-400 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-forest-600 hover:border-charcoal-300 resize-none"
+                    className="block w-full rounded-lg border border-charcoal-200 dark:border-night-600 bg-white dark:bg-night-800 px-3.5 py-2.5 text-sm text-charcoal dark:text-gray-100 placeholder-charcoal-400 dark:placeholder-gray-500 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-forest-600 dark:focus:ring-forest-500 focus:border-forest-600 dark:focus:border-forest-500 hover:border-charcoal-300 dark:hover:border-night-500 resize-none"
                   />
                 </div>
 
@@ -247,8 +247,8 @@ export default function ContactPage() {
           {/* FAQ Accordion */}
           <div className="space-y-4">
             <div>
-              <h2 className="text-xl font-bold text-forest-900">Frequently Asked Questions</h2>
-              <p className="text-xs text-charcoal-500 mt-1">
+              <h2 className="text-xl font-bold text-forest-900 dark:text-gray-100">Frequently Asked Questions</h2>
+              <p className="text-xs text-charcoal-500 dark:text-gray-400 mt-1">
                 Quick answers to common questions about Florva.
               </p>
             </div>
@@ -259,28 +259,30 @@ export default function ContactPage() {
                   key={index}
                   padding="p-0"
                   className={`overflow-hidden transition-colors ${
-                    openFaq === index ? 'border-forest-300 bg-forest-50/30' : ''
+                    openFaq === index
+                      ? 'border-forest-300 bg-forest-50/30 dark:border-forest-800 dark:bg-forest-950/20'
+                      : 'dark:border-night-700'
                   }`}
                 >
                   {/* Question Header — clickable toggle */}
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full px-5 py-4 flex items-center justify-between gap-3 text-left hover:bg-offwhite-100 transition-colors"
+                    className="w-full px-5 py-4 flex items-center justify-between gap-3 text-left hover:bg-offwhite-100 dark:hover:bg-night-700/50 transition-colors"
                   >
-                    <span className="text-sm font-semibold text-forest-900 leading-snug">
+                    <span className="text-sm font-semibold text-forest-900 dark:text-gray-100 leading-snug">
                       {faq.question}
                     </span>
                     {openFaq === index ? (
-                      <ChevronUp className="w-4 h-4 text-forest-600 flex-shrink-0" />
+                      <ChevronUp className="w-4 h-4 text-forest-600 dark:text-forest-400 flex-shrink-0" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-charcoal-400 flex-shrink-0" />
+                      <ChevronDown className="w-4 h-4 text-charcoal-400 dark:text-gray-400 flex-shrink-0" />
                     )}
                   </button>
 
                   {/* Answer Body — conditionally rendered */}
                   {openFaq === index && (
-                    <div className="px-5 pb-4 border-t border-charcoal-100">
-                      <p className="text-xs text-charcoal-600 leading-relaxed pt-3">
+                    <div className="px-5 pb-4 border-t border-charcoal-100 dark:border-night-700">
+                      <p className="text-xs text-charcoal-600 dark:text-gray-300 leading-relaxed pt-3">
                         {faq.answer}
                       </p>
                     </div>
@@ -296,12 +298,12 @@ export default function ContactPage() {
           SECTION 4: CTA Banner
           ═══════════════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <Card className="bg-gradient-to-r from-forest-50 to-sage-50 border-forest-200 shadow-botanical-lg text-center p-8 sm:p-12">
+        <Card className="bg-gradient-to-r from-forest-50 to-sage-50 dark:from-night-800 dark:to-night-700 border-forest-200 dark:border-night-600 shadow-botanical-lg text-center p-8 sm:p-12">
           <div className="max-w-2xl mx-auto space-y-5">
-            <h2 className="text-2xl sm:text-3xl font-bold text-forest-900">
+            <h2 className="text-2xl sm:text-3xl font-bold text-forest-900 dark:text-gray-100">
               Prefer to Explore on Your Own?
             </h2>
-            <p className="text-sm text-charcoal-600 leading-relaxed">
+            <p className="text-sm text-charcoal-600 dark:text-gray-300 leading-relaxed">
               Browse our plant collection, discover gardening services, or create
               a free account to get personalized care recommendations.
             </p>

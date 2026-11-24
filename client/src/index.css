@@ -3,10 +3,21 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
   body {
-    background-color: #F8FAF6;
+    background-color: #F8FAFA;
     color: #1F2937;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .dark body {
+    background-color: #0C130F;
+    color: #F1F5F2;
   }
 }
 
@@ -24,7 +35,7 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F1F5EE;
+  background: #F1F5F0;
 }
 ::-webkit-scrollbar-thumb {
   background: #A8C5A0;
@@ -32,4 +43,24 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #8FB585;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0C130F;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #23372B;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3D8259;
+}
+
+/* Utility to hide scrollbars while keeping overflow active */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

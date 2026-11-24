@@ -27,10 +27,10 @@ export default function ServicesPage() {
       {/* ─── Page Header ─── */}
       <div className="text-center max-w-2xl mx-auto space-y-3">
         <Badge variant="forest" size="md" icon={Calendar}>Expert Care On-Demand</Badge>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-forest-900 tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-forest-900 dark:text-gray-100 tracking-tight">
           Professional Gardening Services
         </h1>
-        <p className="text-sm text-charcoal-600 leading-relaxed">
+        <p className="text-sm text-charcoal-600 dark:text-charcoal-300 leading-relaxed">
           From full balcony garden setups to plant health diagnostic visits, our verified horticulturist
           brings premium organic soils, specialized tools, and expert plant guidance directly to your home.
         </p>
@@ -42,10 +42,10 @@ export default function ServicesPage() {
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors flex-shrink-0 ${
+            className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors flex-shrink-0 cursor-pointer ${
               selectedCategory === cat
-                ? 'bg-forest text-white shadow-sm'
-                : 'bg-white text-charcoal-700 hover:bg-sage-100 border border-charcoal-200'
+                ? 'bg-forest dark:bg-forest-600 text-white shadow-sm'
+                : 'bg-white dark:bg-night-800 text-charcoal-700 dark:text-gray-300 hover:bg-sage-100 dark:hover:bg-night-700 border border-charcoal-200 dark:border-night-600'
             }`}
           >
             {cat}
@@ -61,40 +61,40 @@ export default function ServicesPage() {
       </div>
 
       {/* ─── How Service Appointments Work Explainer ─── */}
-      <div className="bg-white rounded-2xl border border-charcoal-200/80 p-8 shadow-sm space-y-6">
+      <div className="bg-white dark:bg-night-800 rounded-2xl border border-charcoal-200/80 dark:border-night-600 p-8 shadow-sm space-y-6 transition-colors">
         <div className="text-center max-w-xl mx-auto space-y-2">
           <Badge variant="default" size="sm">Simple Booking Process</Badge>
-          <h2 className="text-2xl font-bold text-forest-900">How On-Site Services Work</h2>
-          <p className="text-xs text-charcoal-600">Three straightforward steps to transform your garden space.</p>
+          <h2 className="text-2xl font-bold text-forest-900 dark:text-gray-100">How On-Site Services Work</h2>
+          <p className="text-xs text-charcoal-600 dark:text-charcoal-300">Three straightforward steps to transform your garden space.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 text-center">
-          <div className="p-4 rounded-xl bg-offwhite border border-charcoal-100 space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-forest-50 text-forest font-bold flex items-center justify-center mx-auto text-sm border border-forest-200">
+          <div className="p-4 rounded-xl bg-offwhite dark:bg-night-900 border border-charcoal-100 dark:border-night-700 space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-forest-50 dark:bg-night-800 text-forest dark:text-sage-300 font-bold flex items-center justify-center mx-auto text-sm border border-forest-200 dark:border-forest-800">
               1
             </div>
-            <h3 className="font-bold text-forest-900 text-sm">Select Service & Slot</h3>
-            <p className="text-xs text-charcoal-600">
+            <h3 className="font-bold text-forest-900 dark:text-gray-100 text-sm">Select Service & Slot</h3>
+            <p className="text-xs text-charcoal-600 dark:text-charcoal-300">
               Pick the required service and choose your preferred date and 2-hour morning or afternoon time slot.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-offwhite border border-charcoal-100 space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-forest-50 text-forest font-bold flex items-center justify-center mx-auto text-sm border border-forest-200">
+          <div className="p-4 rounded-xl bg-offwhite dark:bg-night-900 border border-charcoal-100 dark:border-night-700 space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-forest-50 dark:bg-night-800 text-forest dark:text-sage-300 font-bold flex items-center justify-center mx-auto text-sm border border-forest-200 dark:border-forest-800">
               2
             </div>
-            <h3 className="font-bold text-forest-900 text-sm">Gardener Confirmation</h3>
-            <p className="text-xs text-charcoal-600">
+            <h3 className="font-bold text-forest-900 dark:text-gray-100 text-sm">Gardener Confirmation</h3>
+            <p className="text-xs text-charcoal-600 dark:text-charcoal-300">
               Our verified horticulturist confirms your appointment and prepares appropriate organic soil and tools.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-offwhite border border-charcoal-100 space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-forest-50 text-forest font-bold flex items-center justify-center mx-auto text-sm border border-forest-200">
+          <div className="p-4 rounded-xl bg-offwhite dark:bg-night-900 border border-charcoal-100 dark:border-night-700 space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-forest-50 dark:bg-night-800 text-forest dark:text-sage-300 font-bold flex items-center justify-center mx-auto text-sm border border-forest-200 dark:border-forest-800">
               3
             </div>
-            <h3 className="font-bold text-forest-900 text-sm">On-Site Execution</h3>
-            <p className="text-xs text-charcoal-600">
+            <h3 className="font-bold text-forest-900 dark:text-gray-100 text-sm">On-Site Execution</h3>
+            <p className="text-xs text-charcoal-600 dark:text-charcoal-300">
               We complete the work cleanly, dispose of old soil waste, and leave you with tailored plant care guidelines.
             </p>
           </div>

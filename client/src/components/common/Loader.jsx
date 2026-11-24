@@ -20,10 +20,10 @@ export default function Loader({
   const content = (
     <div className={clsx('flex flex-col items-center justify-center text-center gap-3', className)}>
       <div className="relative">
-        <div className={clsx('animate-spin rounded-full border-2 border-sage-200 border-t-forest-700', sizes[size])} />
-        <Sprout className="w-3.5 h-3.5 text-forest-700 absolute inset-0 m-auto animate-pulse" />
+        <div className={clsx('animate-spin rounded-full border-2 border-sage-200 dark:border-night-600 border-t-forest-700 dark:border-t-sage-400', sizes[size])} />
+        <Sprout className="w-3.5 h-3.5 text-forest-700 dark:text-sage-400 absolute inset-0 m-auto animate-pulse" />
       </div>
-      {message && <p className="text-xs font-medium text-charcoal-500 animate-pulse">{message}</p>}
+      {message && <p className="text-xs font-medium text-charcoal-500 dark:text-charcoal-400 animate-pulse">{message}</p>}
     </div>
   );
 

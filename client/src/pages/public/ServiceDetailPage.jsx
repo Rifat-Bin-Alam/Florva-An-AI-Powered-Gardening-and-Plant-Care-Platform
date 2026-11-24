@@ -78,52 +78,52 @@ export default function ServiceDetailPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10">
       {/* ─── Breadcrumb ─── */}
-      <nav className="flex items-center gap-2 text-xs text-charcoal-500">
-        <Link to="/" className="hover:text-forest">Home</Link>
+      <nav className="flex items-center gap-2 text-xs text-charcoal-500 dark:text-charcoal-400">
+        <Link to="/" className="hover:text-forest dark:hover:text-sage-300">Home</Link>
         <span>/</span>
-        <Link to="/services" className="hover:text-forest">Services</Link>
+        <Link to="/services" className="hover:text-forest dark:hover:text-sage-300">Services</Link>
         <span>/</span>
-        <span className="text-forest-900 font-semibold truncate max-w-xs">{service.name}</span>
+        <span className="text-forest-900 dark:text-sage-300 font-semibold truncate max-w-xs">{service.name}</span>
       </nav>
 
       {/* ─── Confirmation Screen View (if booked) ─── */}
       {bookingConfirmed ? (
-        <Card className="max-w-2xl mx-auto text-center p-8 sm:p-12 space-y-6 border-forest-200 shadow-botanical-lg">
-          <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto border border-emerald-200">
+        <Card className="max-w-2xl mx-auto text-center p-8 sm:p-12 space-y-6 border-forest-200 dark:border-night-600 shadow-botanical-lg bg-white dark:bg-night-800">
+          <div className="w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-300 flex items-center justify-center mx-auto border border-emerald-200 dark:border-emerald-800/60">
             <CheckCircle2 className="w-8 h-8" />
           </div>
 
           <div className="space-y-2">
             <Badge variant="success" size="md">Appointment Requested</Badge>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-forest-900">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-forest-900 dark:text-gray-100">
               Booking Confirmed!
             </h1>
-            <p className="text-xs text-charcoal-600 max-w-md mx-auto leading-relaxed">
+            <p className="text-xs text-charcoal-600 dark:text-charcoal-300 max-w-md mx-auto leading-relaxed">
               Your appointment request has been assigned to our verified gardener.
               You will receive confirmation shortly.
             </p>
           </div>
 
-          <div className="bg-offwhite rounded-xl p-4 text-xs text-left space-y-2 border border-charcoal-100 max-w-md mx-auto">
-            <div className="flex justify-between border-b border-charcoal-100 pb-2">
-              <span className="text-charcoal-500">Booking Reference:</span>
-              <strong className="text-forest-900">{bookingConfirmed.bookingNumber}</strong>
+          <div className="bg-offwhite dark:bg-night-900 rounded-xl p-4 text-xs text-left space-y-2 border border-charcoal-100 dark:border-night-700 max-w-md mx-auto">
+            <div className="flex justify-between border-b border-charcoal-100 dark:border-night-700 pb-2">
+              <span className="text-charcoal-500 dark:text-charcoal-400">Booking Reference:</span>
+              <strong className="text-forest-900 dark:text-sage-300">{bookingConfirmed.bookingNumber}</strong>
             </div>
-            <div className="flex justify-between border-b border-charcoal-100 pb-2">
-              <span className="text-charcoal-500">Service:</span>
-              <strong className="text-forest-900">{bookingConfirmed.serviceName}</strong>
+            <div className="flex justify-between border-b border-charcoal-100 dark:border-night-700 pb-2">
+              <span className="text-charcoal-500 dark:text-charcoal-400">Service:</span>
+              <strong className="text-forest-900 dark:text-sage-300">{bookingConfirmed.serviceName}</strong>
             </div>
-            <div className="flex justify-between border-b border-charcoal-100 pb-2">
-              <span className="text-charcoal-500">Scheduled Date:</span>
-              <strong className="text-forest-900">{bookingConfirmed.date}</strong>
+            <div className="flex justify-between border-b border-charcoal-100 dark:border-night-700 pb-2">
+              <span className="text-charcoal-500 dark:text-charcoal-400">Scheduled Date:</span>
+              <strong className="text-forest-900 dark:text-sage-300">{bookingConfirmed.date}</strong>
             </div>
-            <div className="flex justify-between border-b border-charcoal-100 pb-2">
-              <span className="text-charcoal-500">Time Window:</span>
-              <strong className="text-forest-900">{bookingConfirmed.timeSlot}</strong>
+            <div className="flex justify-between border-b border-charcoal-100 dark:border-night-700 pb-2">
+              <span className="text-charcoal-500 dark:text-charcoal-400">Time Window:</span>
+              <strong className="text-forest-900 dark:text-sage-300">{bookingConfirmed.timeSlot}</strong>
             </div>
             <div className="flex justify-between pt-1">
-              <span className="text-charcoal-500">Estimated Total:</span>
-              <strong className="text-forest-900 text-sm">৳{bookingConfirmed.price.toLocaleString()} BDT</strong>
+              <span className="text-charcoal-500 dark:text-charcoal-400">Estimated Total:</span>
+              <strong className="text-forest-900 dark:text-sage-300 text-sm">৳{bookingConfirmed.price.toLocaleString()} BDT</strong>
             </div>
           </div>
 
@@ -146,8 +146,8 @@ export default function ServiceDetailPage() {
           
           {/* Left Column: Service Details */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="bg-white rounded-2xl border border-charcoal-200/80 overflow-hidden shadow-sm">
-              <div className="h-64 sm:h-72 w-full bg-offwhite relative">
+            <div className="bg-white dark:bg-night-800 rounded-2xl border border-charcoal-200/80 dark:border-night-600 overflow-hidden shadow-sm transition-colors">
+              <div className="h-64 sm:h-72 w-full bg-offwhite dark:bg-night-900 relative">
                 <img
                   src={service.image}
                   alt={service.name}
@@ -156,35 +156,35 @@ export default function ServiceDetailPage() {
                 <div className="absolute top-4 left-4">
                   <Badge variant="forest" size="md">{service.category}</Badge>
                 </div>
-                <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-charcoal-700 shadow-sm border border-charcoal-100 flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-forest" />
+                <div className="absolute top-4 right-4 bg-white/95 dark:bg-night-800/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-charcoal-700 dark:text-gray-200 shadow-sm border border-charcoal-100 dark:border-night-600 flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-forest dark:text-sage-400" />
                   <span>{service.duration}</span>
                 </div>
               </div>
 
               <div className="p-6 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-forest-900 tracking-tight">
+                  <h1 className="text-2xl sm:text-3xl font-extrabold text-forest-900 dark:text-gray-100 tracking-tight">
                     {service.name}
                   </h1>
-                  <span className="text-2xl font-extrabold text-forest-800">
+                  <span className="text-2xl font-extrabold text-forest-800 dark:text-sage-300">
                     ৳{service.price.toLocaleString()} BDT
                   </span>
                 </div>
 
-                <p className="text-sm text-charcoal-600 leading-relaxed">
+                <p className="text-sm text-charcoal-600 dark:text-charcoal-300 leading-relaxed">
                   {service.description}
                 </p>
 
                 {/* Inclusions Check List */}
-                <div className="pt-4 border-t border-charcoal-100 space-y-3">
-                  <h3 className="text-xs font-bold text-charcoal-700 uppercase tracking-wider">
+                <div className="pt-4 border-t border-charcoal-100 dark:border-night-700 space-y-3">
+                  <h3 className="text-xs font-bold text-charcoal-700 dark:text-charcoal-300 uppercase tracking-wider">
                     What is Included in This Package:
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {service.includes.map((item) => (
-                      <div key={item} className="flex items-start gap-2 text-xs text-charcoal-700">
-                        <Check className="w-4 h-4 text-forest-600 flex-shrink-0 mt-0.5" />
+                      <div key={item} className="flex items-start gap-2 text-xs text-charcoal-700 dark:text-gray-300">
+                        <Check className="w-4 h-4 text-forest-600 dark:text-sage-400 flex-shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -192,8 +192,8 @@ export default function ServiceDetailPage() {
                 </div>
 
                 {/* Assurance Guarantee */}
-                <div className="bg-sage-50 rounded-xl p-4 flex items-center gap-3 border border-sage-200 text-xs text-forest-900 mt-4">
-                  <ShieldCheck className="w-5 h-5 text-forest flex-shrink-0" />
+                <div className="bg-sage-50 dark:bg-night-900 rounded-xl p-4 flex items-center gap-3 border border-sage-200 dark:border-night-700 text-xs text-forest-900 dark:text-sage-300 mt-4">
+                  <ShieldCheck className="w-5 h-5 text-forest dark:text-sage-400 flex-shrink-0" />
                   <span>Verified Single Gardener: Our dedicated horticulturist arrives with sanitized tools, organic soils, and complete safety equipment.</span>
                 </div>
               </div>
@@ -202,16 +202,16 @@ export default function ServiceDetailPage() {
 
           {/* Right Column: Appointment Booking Form */}
           <div className="lg:col-span-5">
-            <Card className="p-6 space-y-5 border-charcoal-200/80 shadow-botanical">
-              <div className="border-b border-charcoal-100 pb-3">
-                <h2 className="text-lg font-bold text-forest-900">Book Appointment</h2>
-                <p className="text-xs text-charcoal-500">Pick your convenient date & time slot</p>
+            <Card className="p-6 space-y-5 border-charcoal-200/80 dark:border-night-600 shadow-botanical bg-white dark:bg-night-800">
+              <div className="border-b border-charcoal-100 dark:border-night-700 pb-3">
+                <h2 className="text-lg font-bold text-forest-900 dark:text-gray-100">Book Appointment</h2>
+                <p className="text-xs text-charcoal-500 dark:text-charcoal-400">Pick your convenient date & time slot</p>
               </div>
 
               <form onSubmit={handleBookingSubmit} className="space-y-4">
                 {/* Date Picker */}
                 <div>
-                  <label className="block text-xs font-semibold text-charcoal-700 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-charcoal-700 dark:text-charcoal-300 uppercase tracking-wider mb-1.5">
                     Select Appointment Date *
                   </label>
                   <input
@@ -220,13 +220,13 @@ export default function ServiceDetailPage() {
                     value={scheduledDate}
                     onChange={(e) => setScheduledDate(e.target.value)}
                     min={new Date().toISOString().split('T')[0]}
-                    className="w-full bg-offwhite border border-charcoal-200 rounded-xl px-3.5 py-2.5 text-xs text-charcoal font-medium focus:outline-none focus:ring-2 focus:ring-forest"
+                    className="w-full bg-offwhite dark:bg-night-900 border border-charcoal-200 dark:border-night-600 rounded-xl px-3.5 py-2.5 text-xs text-charcoal dark:text-gray-100 font-medium focus:outline-none focus:ring-2 focus:ring-forest dark:focus:ring-sage-400"
                   />
                 </div>
 
                 {/* Time Slot Radio Selection */}
                 <div>
-                  <label className="block text-xs font-semibold text-charcoal-700 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-charcoal-700 dark:text-charcoal-300 uppercase tracking-wider mb-1.5">
                     Available Time Window *
                   </label>
                   <div className="grid grid-cols-2 gap-2">
@@ -235,10 +235,10 @@ export default function ServiceDetailPage() {
                         type="button"
                         key={slot}
                         onClick={() => setSelectedSlot(slot)}
-                        className={`p-2.5 rounded-xl border text-[11px] font-medium text-center transition-colors ${
+                        className={`p-2.5 rounded-xl border text-[11px] font-medium text-center transition-colors cursor-pointer ${
                           selectedSlot === slot
-                            ? 'bg-forest text-white border-forest shadow-sm'
-                            : 'bg-offwhite text-charcoal-700 border-charcoal-200 hover:bg-sage-50'
+                            ? 'bg-forest dark:bg-forest-600 text-white border-forest dark:border-forest-600 shadow-sm'
+                            : 'bg-offwhite dark:bg-night-900 text-charcoal-700 dark:text-gray-300 border-charcoal-200 dark:border-night-600 hover:bg-sage-50 dark:hover:bg-night-700'
                         }`}
                       >
                         {slot}
@@ -269,7 +269,7 @@ export default function ServiceDetailPage() {
 
                 {/* Special Instructions */}
                 <div>
-                  <label className="block text-xs font-semibold text-charcoal-700 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-semibold text-charcoal-700 dark:text-charcoal-300 uppercase tracking-wider mb-1.5">
                     Special Notes / Balcony Details
                   </label>
                   <textarea
@@ -277,14 +277,14 @@ export default function ServiceDetailPage() {
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
                     placeholder="E.g. 4th floor balcony, morning sunlight only..."
-                    className="w-full bg-offwhite border border-charcoal-200 rounded-xl p-3 text-xs text-charcoal placeholder-charcoal-400 focus:outline-none focus:ring-2 focus:ring-forest"
+                    className="w-full bg-offwhite dark:bg-night-900 border border-charcoal-200 dark:border-night-600 rounded-xl p-3 text-xs text-charcoal dark:text-gray-100 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:ring-2 focus:ring-forest dark:focus:ring-sage-400"
                   />
                 </div>
 
                 {/* Pricing Summary */}
-                <div className="pt-2 border-t border-charcoal-100 flex items-center justify-between text-xs">
-                  <span className="text-charcoal-600 font-medium">Payable upon service:</span>
-                  <span className="text-lg font-bold text-forest-900">৳{service.price.toLocaleString()} BDT</span>
+                <div className="pt-2 border-t border-charcoal-100 dark:border-night-700 flex items-center justify-between text-xs">
+                  <span className="text-charcoal-600 dark:text-charcoal-400 font-medium">Payable upon service:</span>
+                  <span className="text-lg font-bold text-forest-900 dark:text-sage-300">৳{service.price.toLocaleString()} BDT</span>
                 </div>
 
                 {/* Submit Action */}

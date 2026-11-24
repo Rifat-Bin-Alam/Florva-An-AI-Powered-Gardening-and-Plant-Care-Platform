@@ -70,28 +70,28 @@ export default function ShopPage() {
       {/* ─── Page Header & Breadcrumb ─── */}
       <div className="space-y-2">
         <Badge variant="forest" size="md" icon={Sprout}>Botanical Catalog</Badge>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-forest-900 tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-forest-900 dark:text-gray-100 tracking-tight">
           Curated Plant Collection
         </h1>
-        <p className="text-sm text-charcoal-600 max-w-2xl leading-relaxed">
+        <p className="text-sm text-charcoal-600 dark:text-charcoal-300 max-w-2xl leading-relaxed">
           Discover hand-selected indoor air purifiers, resilient succulents, and flowering botanicals.
           Each specimen includes authentic care requirements tailored for home and apartment living.
         </p>
       </div>
 
       {/* ─── Search and Filter Control Bar ─── */}
-      <div className="bg-white rounded-2xl border border-charcoal-200/80 p-4 shadow-sm space-y-4">
+      <div className="bg-white dark:bg-night-800 rounded-2xl border border-charcoal-200/80 dark:border-night-600 p-4 shadow-sm space-y-4 transition-colors">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
           
           {/* Live Search Input */}
           <div className="md:col-span-5 relative">
-            <Search className="w-4 h-4 text-charcoal-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-charcoal-400 dark:text-charcoal-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search plants by name, tag, or trait..."
-              className="w-full bg-offwhite border border-charcoal-200 rounded-xl pl-9 pr-3.5 py-2 text-xs text-charcoal placeholder-charcoal-400 focus:outline-none focus:ring-2 focus:ring-forest focus:border-forest"
+              className="w-full bg-offwhite dark:bg-night-900 border border-charcoal-200 dark:border-night-600 rounded-xl pl-9 pr-3.5 py-2 text-xs text-charcoal dark:text-gray-100 placeholder-charcoal-400 dark:placeholder-charcoal-500 focus:outline-none focus:ring-2 focus:ring-forest dark:focus:ring-sage-400 focus:border-forest"
             />
           </div>
 
@@ -100,7 +100,7 @@ export default function ShopPage() {
             <select
               value={selectedCareLevel}
               onChange={(e) => setSelectedCareLevel(e.target.value)}
-              className="w-full bg-offwhite border border-charcoal-200 rounded-xl px-3 py-2 text-xs text-charcoal font-medium focus:outline-none focus:ring-2 focus:ring-forest"
+              className="w-full bg-offwhite dark:bg-night-900 border border-charcoal-200 dark:border-night-600 rounded-xl px-3 py-2 text-xs text-charcoal dark:text-gray-200 font-medium focus:outline-none focus:ring-2 focus:ring-forest dark:focus:ring-sage-400"
             >
               <option value="All">All Care Levels</option>
               <option value="Beginner">Beginner (Easy Care)</option>
@@ -113,7 +113,7 @@ export default function ShopPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full bg-offwhite border border-charcoal-200 rounded-xl px-3 py-2 text-xs text-charcoal font-medium focus:outline-none focus:ring-2 focus:ring-forest"
+              className="w-full bg-offwhite dark:bg-night-900 border border-charcoal-200 dark:border-night-600 rounded-xl px-3 py-2 text-xs text-charcoal dark:text-gray-200 font-medium focus:outline-none focus:ring-2 focus:ring-forest dark:focus:ring-sage-400"
             >
               <option value="featured">Sort by: Popular / Featured</option>
               <option value="price-asc">Price: Low to High (৳)</option>
@@ -128,7 +128,7 @@ export default function ShopPage() {
               <button
                 onClick={resetFilters}
                 title="Reset all filters"
-                className="p-2 rounded-xl text-charcoal-500 hover:text-forest hover:bg-offwhite border border-charcoal-200 transition-colors"
+                className="p-2 rounded-xl text-charcoal-500 dark:text-charcoal-400 hover:text-forest dark:hover:text-sage-300 hover:bg-offwhite dark:hover:bg-night-700 border border-charcoal-200 dark:border-night-600 transition-colors cursor-pointer"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
@@ -137,8 +137,8 @@ export default function ShopPage() {
         </div>
 
         {/* Category Pills Bar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-2 border-t border-charcoal-100 no-scrollbar">
-          <span className="text-xs font-semibold text-charcoal-500 mr-2 flex-shrink-0">Category:</span>
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-2 border-t border-charcoal-100 dark:border-night-700 no-scrollbar">
+          <span className="text-xs font-semibold text-charcoal-500 dark:text-charcoal-400 mr-2 flex-shrink-0">Category:</span>
           {categories.map((cat) => (
             <button
               key={cat}
@@ -146,10 +146,10 @@ export default function ShopPage() {
                 setSelectedCategory(cat);
                 setSearchParams(cat === 'All' ? {} : { category: cat });
               }}
-              className={`px-3 py-1 rounded-full text-xs font-medium transition-colors flex-shrink-0 ${
+              className={`px-3 py-1 rounded-full text-xs font-medium transition-colors flex-shrink-0 cursor-pointer ${
                 selectedCategory === cat
-                  ? 'bg-forest text-white shadow-sm'
-                  : 'bg-offwhite text-charcoal-700 hover:bg-sage-100 border border-charcoal-200'
+                  ? 'bg-forest dark:bg-forest-600 text-white shadow-sm'
+                  : 'bg-offwhite dark:bg-night-900 text-charcoal-700 dark:text-gray-300 hover:bg-sage-100 dark:hover:bg-night-700 border border-charcoal-200 dark:border-night-600'
               }`}
             >
               {cat}
@@ -159,12 +159,12 @@ export default function ShopPage() {
       </div>
 
       {/* ─── Products Count & Results ─── */}
-      <div className="flex items-center justify-between text-xs text-charcoal-500">
+      <div className="flex items-center justify-between text-xs text-charcoal-500 dark:text-charcoal-400">
         <span>
-          Showing <strong className="text-forest-900">{filteredProducts.length}</strong> botanical specimens
+          Showing <strong className="text-forest-900 dark:text-sage-300 font-bold">{filteredProducts.length}</strong> botanical specimens
         </span>
         {hasActiveFilters && (
-          <span className="text-forest-700 font-medium">
+          <span className="text-forest-700 dark:text-sage-400 font-medium">
             Active filters applied
           </span>
         )}
@@ -178,12 +178,12 @@ export default function ShopPage() {
           ))}
         </div>
       ) : (
-        <div className="bg-white rounded-2xl border border-charcoal-200 p-12 text-center max-w-md mx-auto space-y-4">
-          <div className="w-14 h-14 rounded-2xl bg-forest-50 border border-forest-100 flex items-center justify-center text-forest mx-auto">
+        <div className="bg-white dark:bg-night-800 rounded-2xl border border-charcoal-200 dark:border-night-600 p-12 text-center max-w-md mx-auto space-y-4">
+          <div className="w-14 h-14 rounded-2xl bg-forest-50 dark:bg-night-900 border border-forest-100 dark:border-forest-800 flex items-center justify-center text-forest dark:text-sage-400 mx-auto">
             <Sprout className="w-7 h-7" />
           </div>
-          <h3 className="text-lg font-bold text-forest-900">No Plants Match Your Filter</h3>
-          <p className="text-xs text-charcoal-600 leading-relaxed">
+          <h3 className="text-lg font-bold text-forest-900 dark:text-gray-100">No Plants Match Your Filter</h3>
+          <p className="text-xs text-charcoal-600 dark:text-charcoal-400 leading-relaxed">
             Try adjusting your search query, selecting another category, or clearing the active filters.
           </p>
           <Button variant="primary" size="sm" onClick={resetFilters} icon={RotateCcw}>
