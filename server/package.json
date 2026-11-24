@@ -1,0 +1,37 @@
+{
+  "name": "florva-v2-server",
+  "version": "1.0.0",
+  "description": "Backend RESTful API for Florva V2 - Botanical Plant Care & Gardening Platform",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "seed": "node src/scripts/seedUsers.js"
+  },
+  "keywords": [
+    "florva",
+    "gardening",
+    "plant-care",
+    "express",
+    "mongoose",
+    "jwt",
+    "auth"
+  ],
+  "author": "CSE Practicum Student",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^2.5.0",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
